@@ -1,0 +1,8 @@
+Flask==0.9
+Flask-Bcrypt==0.5.2
+Flask-SQLAlchemy==0.16
+Jinja2==2.6
+SQLAlchemy==0.8.0
+Werkzeug==0.8.3
+py-bcrypt==0.2
+wsgiref==0.1.2
