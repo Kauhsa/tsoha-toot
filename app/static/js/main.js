@@ -2,6 +2,21 @@ var AuthState;
 window.App = Ember.Application.create();
 AuthState = Ember.Object.extend({
   loggedUser: null,
+  init: function(){
+    var obj, event;
+    obj = this;
+    event = $.ajax({
+      type: 'GET',
+      url: '/logged_user'
+    });
+    return event.done(function(data){
+      if ('logged_user' in data) {
+        return obj.set('loggedUser', data['logged_user']);
+      } else {
+        return obj.set('loggedUser', null);
+      }
+    });
+  },
   login: function(id, password){
     var obj, event;
     obj = this;
@@ -16,7 +31,7 @@ AuthState = Ember.Object.extend({
     event.done(function(){
       return obj.set('loggedUser', id);
     });
-    event.fail(function(){
+    return event.fail(function(){
       return obj.set('loggedUser', null);
     });
   },
@@ -47,5 +62,44 @@ App.IndexRoute = Ember.Route.extend({
   }
 });
 App.NavbarController = Ember.Controller.extend({
-  foo: 'bar'
+  loginId: null,
+  loginPassword: null,
+  login: function(){
+    return App.AuthState.login(this.get('loginId'), this.get('loginPassword'));
+  },
+  logout: function(){
+    return App.AuthState.logout();
+  }
+});
+App.Popover = Ember.View.extend({
+  tagName: 'a',
+  template: Ember.Handlebars.compile('{{ view.label }}'),
+  attributeBindings: ['href'],
+  href: '#',
+  label: 'Popover',
+  placement: 'bottom',
+  contentElement: '',
+  didInsertElement: function(){
+    var view;
+    view = this;
+    $(this.get('contentElement')).hide();
+    this.$().click(function(){
+      return $(view.get('contentElement')).show();
+    });
+    return this.$().popover({
+      content: $(this.get('contentElement')),
+      placement: this.get('placement'),
+      html: true
+    });
+  }
+});
+App.Dropdown = Ember.View.extend({
+  tagName: 'a',
+  classNames: ['dropdown-toggle'],
+  attributeBindings: ['href', 'id'],
+  id: '',
+  href: '#',
+  didInsertElement: function(){
+    return this.$().dropdown();
+  }
 });

@@ -42,5 +42,12 @@ def logout():
     del session['logged_user_id']
     return jsonify()
 
+@app.route('/logged_user', methods=['GET'])
+def logged_user():
+    if 'logged_user_id' not in session:
+        return jsonify()
+    else:
+        return jsonify(logged_user=session['logged_user_id'])
+
 if __name__ == '__main__':
     app.run(debug=True)

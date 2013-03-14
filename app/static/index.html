@@ -32,10 +32,24 @@
             </ul>
             <ul class="nav pull-right">
                 {{# if App.AuthState.loggedUser }}
-                    <li><a href="#"><strong>@{{ App.AuthState.loggedUser }}</strong></a></li>
+                    <li>
+                        {{# view App.Dropdown id="userDrop" }}
+                            <strong>@{{ App.AuthState.loggedUser }}</strong>
+                            <b class="caret"></b>
+                        {{/view}}
+                        <ul class="dropdown-menu" aria-labelledby="userDrop">
+                            <li><a {{ action 'logout' }}>Logout</a></li>
+                        </ul>
+                    </li>
                 {{else}}
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li>{{ view App.Popover label="Kirjaudu" contentElement="#login-popover"}}</li>
+                    <span id="login-popover">
+                        <form style="margin-bottom: 5px">
+                            {{ view Ember.TextField placeholder="Käyttäjätunnus" type="text" valueBinding="loginId" }}
+                            {{ view Ember.TextField placeholder="Salasana" type="password" valueBinding="loginPassword" }}
+                            <button class="btn"{{ action 'login' }}>Kirjaudu</button>
+                        </form>
+                    </span>
                 {{/if}}
             </ul>
         </script>
