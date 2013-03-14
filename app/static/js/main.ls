@@ -65,15 +65,31 @@ App.RegisterRoute = Ember.Route.extend do
 App.NavbarController = Ember.Controller.extend do
     loginId: null
     loginPassword: null
+    loginErrors: Ember.A!
     currentlyLoggingIn: false
+
     login: ->
+        id = @get 'loginId'
+        pass = @get 'loginPassword'
         ctrl = this
+        @set 'loginErrors' Ember.A!
+
+        if not id
+            @set 'loginErrors' Ember.A ['Syötä käyttäjätunnus.']
+            return
+
+        if not pass
+            @set 'loginErrors' Ember.A ['Syötä salasana.']
+            return
+
         @.set 'currentlyLoggingIn' true
         App.AuthState.login do
-            id: @get 'loginId'
-            password: @get 'loginPassword'
+            id: id
+            password: pass
             success: -> ctrl.set 'currentlyLoggingIn' false
-            failure: -> ctrl.set 'currentlyLoggingIn' false
+            failure: ->
+                ctrl.set 'loginErrors' Ember.A ['Virheellinen käyttäjätunnus tai salasana.']
+                ctrl.set 'currentlyLoggingIn' false
     logout: ->
         App.AuthState.logout do
             success: ->

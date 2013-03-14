@@ -47,6 +47,11 @@
                     <li>{{# linkTo 'register' }}Rekisteröidy{{/linkTo}}</li>
                     <li>{{ view App.Popover label="Kirjaudu" contentElement="#login-popover"}}</li>
                     <span id="login-popover">
+                        {{# each loginErrors }}
+                            <div class="alert alert-error">
+                                {{ this }}
+                            </div>
+                        {{/each}}
                         <form style="margin-bottom: 5px" action="#">
                             {{ view Ember.TextField placeholder="Käyttäjätunnus" type="text" valueBinding="loginId" }}
                             {{ view Ember.TextField placeholder="Salasana" type="password" valueBinding="loginPassword" }}

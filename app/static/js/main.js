@@ -86,18 +86,31 @@ App.RegisterRoute = Ember.Route.extend({
 App.NavbarController = Ember.Controller.extend({
   loginId: null,
   loginPassword: null,
+  loginErrors: Ember.A(),
   currentlyLoggingIn: false,
   login: function(){
-    var ctrl;
+    var id, pass, ctrl;
+    id = this.get('loginId');
+    pass = this.get('loginPassword');
     ctrl = this;
+    this.set('loginErrors', Ember.A());
+    if (!id) {
+      this.set('loginErrors', Ember.A(['Syötä käyttäjätunnus.']));
+      return;
+    }
+    if (!pass) {
+      this.set('loginErrors', Ember.A(['Syötä salasana.']));
+      return;
+    }
     this.set('currentlyLoggingIn', true);
     return App.AuthState.login({
-      id: this.get('loginId'),
-      password: this.get('loginPassword'),
+      id: id,
+      password: pass,
       success: function(){
         return ctrl.set('currentlyLoggingIn', false);
       },
       failure: function(){
+        ctrl.set('loginErrors', Ember.A(['Virheellinen käyttäjätunnus tai salasana.']));
         return ctrl.set('currentlyLoggingIn', false);
       }
     });
