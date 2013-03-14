@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fi">
+    <head>
+        <meta charset="utf-8">
+        <title>Tööt! - huikeita mikroblogeja</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0-rc.1/ember.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script src="js/main.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <script type="text/x-handlebars">
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        {{outlet navbar}}
+                    </div>
+                </div>
+            </div>
+    
+            <div class="container">
+                {{outlet main}}
+            </div>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="navbar">
+            <span class="brand">Tööt!</span>
+            <ul class="nav">
+            </ul>
+            <ul class="nav pull-right">
+                {{# if App.AuthState.loggedUser }}
+                    <li><a href="#"><strong>@{{ App.AuthState.loggedUser }}</strong></a></li>
+                {{else}}
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                {{/if}}
+            </ul>
+        </script>
+    </body>
+</html>
+

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, session
+from flask import Flask, jsonify, request, session, redirect
 from models import db, bcrypt, User
 
 def initalize_app():
@@ -12,6 +12,10 @@ def initalize_app():
     return app
 
 app = initalize_app()
+
+@app.route('/', methods=['GET'])
+def index():
+    return redirect('static/index.html')
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -33,9 +37,10 @@ def login():
     else:
         return jsonify(error='Incorrect username or password'), 400
 
-@app.route('/login_status', methods=['GET'])
-def login_status():
-    pass
+@app.route('/logout', methods=['POST'])
+def logout():
+    del session['logged_user_id']
+    return jsonify()
 
 if __name__ == '__main__':
     app.run(debug=True)
