@@ -72,6 +72,17 @@ App.IndexRoute = Ember.Route.extend({
     });
   }
 });
+App.RegisterRoute = Ember.Route.extend({
+  renderTemplate: function(){
+    this.render('navbar', {
+      controller: 'navbar',
+      outlet: 'navbar'
+    });
+    return this.render('register', {
+      outlet: 'main'
+    });
+  }
+});
 App.NavbarController = Ember.Controller.extend({
   loginId: null,
   loginPassword: null,
@@ -102,7 +113,7 @@ App.Popover = Ember.View.extend({
   tagName: 'a',
   template: Ember.Handlebars.compile('{{ view.label }}'),
   attributeBindings: ['href'],
-  href: '#',
+  href: 'javascript:;',
   label: 'Popover',
   placement: 'bottom',
   contentElement: '',
@@ -128,7 +139,7 @@ App.Dropdown = Ember.View.extend({
   classNames: ['dropdown-toggle'],
   attributeBindings: ['href', 'id'],
   id: '',
-  href: '#',
+  href: 'javascript:;',
   didInsertElement: function(){
     return this.$().dropdown();
   }

@@ -54,6 +54,14 @@ App.IndexRoute = Ember.Route.extend do
             controller: 'navbar'
             outlet: 'navbar'
 
+App.RegisterRoute = Ember.Route.extend do
+    renderTemplate: ->
+        @render 'navbar',
+            controller: 'navbar'
+            outlet: 'navbar'
+        @render 'register',
+            outlet: 'main'
+
 App.NavbarController = Ember.Controller.extend do
     loginId: null
     loginPassword: null
@@ -75,7 +83,7 @@ App.Popover = Ember.View.extend do
     tagName: 'a'
     template: Ember.Handlebars.compile '{{ view.label }}'
     attributeBindings: ['href']
-    href: '#'
+    href: 'javascript:;'
     label: 'Popover'
     placement: 'bottom'
     contentElement: ''
@@ -95,6 +103,6 @@ App.Dropdown = Ember.View.extend do
     classNames: ['dropdown-toggle']
     attributeBindings: ['href', 'id']
     id: ''
-    href: '#'
+    href: 'javascript:;'
     didInsertElement: ->
         this.$!dropdown!
