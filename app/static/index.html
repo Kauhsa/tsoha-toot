@@ -6,6 +6,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0-rc.1/ember.min.js"></script>
+        <script src="js/ember-data.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
         <script src="js/main.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
@@ -36,7 +37,7 @@
                 {{# if App.AuthState.loggedUser }}
                     <li>
                         {{# view App.Dropdown id="userDrop" }}
-                            <strong>@{{ App.AuthState.loggedUser }}</strong>
+                            <strong>@{{ App.AuthState.loggedUser.id }}</strong>
                             <b class="caret"></b>
                         {{/view}}
                         <ul class="dropdown-menu" aria-labelledby="userDrop">
@@ -66,6 +67,12 @@
                     </span>
                 {{/if}}
             </ul>
+        </script>
+
+        <script type="text/x-handlebars" data-template-name="index">
+            <div class="page-header">
+                <h1>Tööt! - huikeita mikroblogeja</h1>
+            </div>
         </script>
 
         <script type="text/x-handlebars" data-template-name="register">

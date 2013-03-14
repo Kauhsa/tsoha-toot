@@ -18,15 +18,6 @@ app = initalize_app()
 def index():
     return redirect('static/index.html')
 
-@app.route('/register', methods=['POST'])
-def register():
-    id = request.form['id']
-    password = request.form['password']
-    user = User(id, password)
-    db.session.add(user)
-    db.session.commit()
-    return '', 201
-
 @app.route('/login', methods=['POST'])
 def login():
     id = request.form['id']
@@ -49,6 +40,20 @@ def logged_user():
         return jsonify()
     else:
         return jsonify(logged_user=session['logged_user_id'])
+
+@app.route('/users/<id>', methods=['GET', 'PUT', 'DELETE'])
+def users(id):
+    if request.method == 'GET':
+        return jsonify(user=User.query.get_or_404(id).dict())
+
+@app.route('/users', methods=['POST'])
+def user_add():
+    id = request.form['id']
+    password = request.form['password']
+    user = User(id, password)
+    db.session.add(user)
+    db.session.commit()
+    return '', 201
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

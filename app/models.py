@@ -32,3 +32,8 @@ class User(db.Model):
         assert len(id) > 2
         assert all(char in USER_ID_CHARS for char in id)
         return id
+
+    def dict(self):
+        return {
+            'id': self.id,
+        }

@@ -1,5 +1,11 @@
 window.App = Ember.Application.create!
 
+App.Store = DS.Store.extend do
+    revision: 12
+
+App.User = DS.Model.extend do
+    foo: 'bar'
+
 AuthState = Ember.Object.extend do
     loggedUser: null
 
@@ -10,7 +16,7 @@ AuthState = Ember.Object.extend do
             url: '/logged_user'
         event.done (data) ->
             if 'logged_user' of data
-                obj.set 'loggedUser' data['logged_user']
+                obj.set 'loggedUser' App.User.find data['logged_user']
             else
                 obj.set 'loggedUser' null
 
@@ -23,7 +29,7 @@ AuthState = Ember.Object.extend do
                 id: id
                 password: password
         event.done ->
-            obj.set 'loggedUser' id
+            obj.set 'loggedUser' App.User.find id
             success!
         event.fail ->
             obj.set 'loggedUser' null
@@ -53,6 +59,8 @@ App.IndexRoute = Ember.Route.extend do
         @render 'navbar',
             controller: 'navbar'
             outlet: 'navbar'
+        @render 'index',
+            outlet: 'main'
 
 App.RegisterRoute = Ember.Route.extend do
     renderTemplate: ->
@@ -86,7 +94,10 @@ App.NavbarController = Ember.Controller.extend do
         App.AuthState.login do
             id: id
             password: pass
-            success: -> ctrl.set 'currentlyLoggingIn' false
+            success: ->
+                ctrl.set 'loginId' null
+                ctrl.set 'loginPassword' null
+                ctrl.set 'currentlyLoggingIn' false
             failure: ->
                 ctrl.set 'loginErrors' Ember.A ['Virheellinen käyttäjätunnus tai salasana.']
                 ctrl.set 'currentlyLoggingIn' false

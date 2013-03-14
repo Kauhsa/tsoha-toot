@@ -1,5 +1,11 @@
 var AuthState;
 window.App = Ember.Application.create();
+App.Store = DS.Store.extend({
+  revision: 12
+});
+App.User = DS.Model.extend({
+  foo: 'bar'
+});
 AuthState = Ember.Object.extend({
   loggedUser: null,
   init: function(){
@@ -11,7 +17,7 @@ AuthState = Ember.Object.extend({
     });
     return event.done(function(data){
       if ('logged_user' in data) {
-        return obj.set('loggedUser', data['logged_user']);
+        return obj.set('loggedUser', App.User.find(data['logged_user']));
       } else {
         return obj.set('loggedUser', null);
       }
@@ -30,7 +36,7 @@ AuthState = Ember.Object.extend({
       }
     });
     event.done(function(){
-      obj.set('loggedUser', id);
+      obj.set('loggedUser', App.User.find(id));
       return success();
     });
     return event.fail(function(){
@@ -66,9 +72,12 @@ App.Router.map(function(){
 });
 App.IndexRoute = Ember.Route.extend({
   renderTemplate: function(){
-    return this.render('navbar', {
+    this.render('navbar', {
       controller: 'navbar',
       outlet: 'navbar'
+    });
+    return this.render('index', {
+      outlet: 'main'
     });
   }
 });
@@ -107,6 +116,8 @@ App.NavbarController = Ember.Controller.extend({
       id: id,
       password: pass,
       success: function(){
+        ctrl.set('loginId', null);
+        ctrl.set('loginPassword', null);
         return ctrl.set('currentlyLoggingIn', false);
       },
       failure: function(){
