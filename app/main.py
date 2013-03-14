@@ -5,7 +5,7 @@ from models import db, bcrypt, User
 def initalize_app():
     app = Flask(__name__)
     app.config.update(
-        SQLALCHEMY_DATABASE_URI='sqlite:///database',
+        SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL', 'sqlite:///database'),
         SECRET_KEY="top secret okay"
     )
     bcrypt.init_app(app)
