@@ -86,23 +86,23 @@
                 <div class="control-group">
                     <label class="control-label" for="id">Käyttäjätunnus</label>
                     <div class="controls">
-                        {{ view Ember.TextField id="id" }}
+                        {{ view Ember.TextField id="id" valueBinding="id" }}
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="password">Salasana</label>
                     <div class="controls">
-                        {{ view Ember.TextField id="password" type="password" }}
+                        {{ view Ember.TextField id="password" type="password" valueBinding="password" }}
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label" for="password2">Salasana uudestaan</label>
                     <div class="controls">
-                        {{ view Ember.TextField id="password2" type="password" }}
+                        {{ view Ember.TextField id="password2" type="password" valueBinding="passwordConfirm" }}
                     </div>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Liity joukkoon tummaan</button>
+                    <button type="submit" class="btn btn-primary" {{ action 'register' }}>Liity joukkoon tummaan</button>
                 </div>
             </form>
         </script>

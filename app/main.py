@@ -20,10 +20,8 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    id = request.form['id']
-    user = User.query.get_or_404(id)
-    password = request.form['password']
-    if user.authenticate(password):
+    user = User.query.get_or_404(request.form['id'])
+    if user.authenticate(request.form['password']):
         session['logged_user_id'] = user.id
         return jsonify()
     else:
@@ -48,12 +46,11 @@ def users(id):
 
 @app.route('/users', methods=['POST'])
 def user_add():
-    id = request.form['id']
-    password = request.form['password']
-    user = User(id, password)
+    json = request.json['user']
+    user = User(json['id'], json['password'])
     db.session.add(user)
     db.session.commit()
-    return '', 201
+    return jsonify(user=user.dict()), 200
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

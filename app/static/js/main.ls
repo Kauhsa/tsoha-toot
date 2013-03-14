@@ -4,7 +4,7 @@ App.Store = DS.Store.extend do
     revision: 12
 
 App.User = DS.Model.extend do
-    foo: 'bar'
+    password: DS.attr('string')
 
 AuthState = Ember.Object.extend do
     loggedUser: null
@@ -105,6 +105,16 @@ App.NavbarController = Ember.Controller.extend do
         App.AuthState.logout do
             success: ->
             failure: ->
+
+App.RegisterController = Ember.Controller.extend do
+    id: null
+    password: null
+    passwordConfirm: null
+    register: ->
+        newUser = App.User.createRecord do
+            id: @get 'id'
+            password: @get 'password'
+        newUser.save()
 
 App.Popover = Ember.View.extend do
     tagName: 'a'

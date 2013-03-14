@@ -4,7 +4,7 @@ App.Store = DS.Store.extend({
   revision: 12
 });
 App.User = DS.Model.extend({
-  foo: 'bar'
+  password: DS.attr('string')
 });
 AuthState = Ember.Object.extend({
   loggedUser: null,
@@ -131,6 +131,19 @@ App.NavbarController = Ember.Controller.extend({
       success: function(){},
       failure: function(){}
     });
+  }
+});
+App.RegisterController = Ember.Controller.extend({
+  id: null,
+  password: null,
+  passwordConfirm: null,
+  register: function(){
+    var newUser;
+    newUser = App.User.createRecord({
+      id: this.get('id'),
+      password: this.get('password')
+    });
+    return newUser.save();
   }
 });
 App.Popover = Ember.View.extend({
