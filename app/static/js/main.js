@@ -17,8 +17,9 @@ AuthState = Ember.Object.extend({
       }
     });
   },
-  login: function(id, password){
-    var obj, event;
+  login: function(arg$){
+    var id, password, success, failure, obj, event;
+    id = arg$.id, password = arg$.password, success = arg$.success, failure = arg$.failure;
     obj = this;
     event = $.ajax({
       type: 'POST',
@@ -29,28 +30,38 @@ AuthState = Ember.Object.extend({
       }
     });
     event.done(function(){
-      return obj.set('loggedUser', id);
+      obj.set('loggedUser', id);
+      return success();
     });
     return event.fail(function(){
-      return obj.set('loggedUser', null);
+      obj.set('loggedUser', null);
+      return failure();
     });
   },
-  logout: function(){
-    var obj, event;
+  logout: function(arg$){
+    var success, failure, obj, event;
+    success = arg$.success, failure = arg$.failure;
     obj = this;
     event = $.ajax({
       type: 'POST',
       url: '/logout'
     });
-    return event.done(function(){
-      return obj.set('loggedUser', null);
+    event.done(function(){
+      obj.set('loggedUser', null);
+      return success();
+    });
+    return event.fail(function(){
+      return failure();
     });
   }
 });
 App.AuthState = AuthState.create();
 App.Router.map(function(){
-  return this.route("index", {
+  this.route("index", {
     path: "/"
+  });
+  return this.route("register", {
+    path: '/register'
   });
 });
 App.IndexRoute = Ember.Route.extend({
@@ -64,11 +75,27 @@ App.IndexRoute = Ember.Route.extend({
 App.NavbarController = Ember.Controller.extend({
   loginId: null,
   loginPassword: null,
+  currentlyLoggingIn: false,
   login: function(){
-    return App.AuthState.login(this.get('loginId'), this.get('loginPassword'));
+    var ctrl;
+    ctrl = this;
+    this.set('currentlyLoggingIn', true);
+    return App.AuthState.login({
+      id: this.get('loginId'),
+      password: this.get('loginPassword'),
+      success: function(){
+        return ctrl.set('currentlyLoggingIn', false);
+      },
+      failure: function(){
+        return ctrl.set('currentlyLoggingIn', false);
+      }
+    });
   },
   logout: function(){
-    return App.AuthState.logout();
+    return App.AuthState.logout({
+      success: function(){},
+      failure: function(){}
+    });
   }
 });
 App.Popover = Ember.View.extend({
@@ -84,7 +111,10 @@ App.Popover = Ember.View.extend({
     view = this;
     $(this.get('contentElement')).hide();
     this.$().click(function(){
-      return $(view.get('contentElement')).show();
+      $(view.get('contentElement')).show();
+      return setTimeout(function(){
+        return this.$('input:first').focus();
+      }, 100);
     });
     return this.$().popover({
       content: $(this.get('contentElement')),

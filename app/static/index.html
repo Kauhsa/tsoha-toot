@@ -38,16 +38,23 @@
                             <b class="caret"></b>
                         {{/view}}
                         <ul class="dropdown-menu" aria-labelledby="userDrop">
-                            <li><a {{ action 'logout' }}>Logout</a></li>
+                            <li><a {{ action 'logout' }}>Kirjaudu ulos</a></li>
                         </ul>
                     </li>
                 {{else}}
+                    <li>{{# linkTo 'register' }}Rekisteröidy{{/linkTo}}</li>
                     <li>{{ view App.Popover label="Kirjaudu" contentElement="#login-popover"}}</li>
                     <span id="login-popover">
-                        <form style="margin-bottom: 5px">
+                        <form style="margin-bottom: 5px" action="#">
                             {{ view Ember.TextField placeholder="Käyttäjätunnus" type="text" valueBinding="loginId" }}
                             {{ view Ember.TextField placeholder="Salasana" type="password" valueBinding="loginPassword" }}
-                            <button class="btn"{{ action 'login' }}>Kirjaudu</button>
+                            <button type="submit" class="btn btn-primary" {{ bindAttr disabled="currentlyLoggingIn" }} {{ action 'login' }}>
+                                {{# if currentlyLoggingIn }}
+                                    Kirjaudutaan...
+                                {{ else }}
+                                    Kirjaudu
+                                {{/if}}
+                            </button>
                         </form>
                     </span>
                 {{/if}}

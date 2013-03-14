@@ -14,7 +14,7 @@ AuthState = Ember.Object.extend do
             else
                 obj.set 'loggedUser' null
 
-    login: (id, password) ->
+    login: ({id, password, success, failure}) ->
         obj = this
         event = $.ajax do
             type: 'POST'
@@ -24,22 +24,29 @@ AuthState = Ember.Object.extend do
                 password: password
         event.done ->
             obj.set 'loggedUser' id
+            success!
         event.fail ->
             obj.set 'loggedUser' null
+            failure!
 
-    logout: ->
+    logout: ({success, failure}) ->
         obj = this
         event = $.ajax do
             type: 'POST'
             url: '/logout'
         event.done ->
             obj.set 'loggedUser' null
+            success!
+        event.fail ->
+            failure!
 
 App.AuthState = AuthState.create!
 
 App.Router.map ->
     @route "index",
         path: "/"
+    @route "register",
+        path: '/register'
 
 App.IndexRoute = Ember.Route.extend do
     renderTemplate: ->
@@ -50,10 +57,19 @@ App.IndexRoute = Ember.Route.extend do
 App.NavbarController = Ember.Controller.extend do
     loginId: null
     loginPassword: null
+    currentlyLoggingIn: false
     login: ->
-        App.AuthState.login @get('loginId'), @get('loginPassword')
+        ctrl = this
+        @.set 'currentlyLoggingIn' true
+        App.AuthState.login do
+            id: @get 'loginId'
+            password: @get 'loginPassword'
+            success: -> ctrl.set 'currentlyLoggingIn' false
+            failure: -> ctrl.set 'currentlyLoggingIn' false
     logout: ->
-        App.AuthState.logout!
+        App.AuthState.logout do
+            success: ->
+            failure: ->
 
 App.Popover = Ember.View.extend do
     tagName: 'a'
@@ -65,9 +81,10 @@ App.Popover = Ember.View.extend do
     contentElement: ''
     didInsertElement: ->
         view = this
-        $ @get 'contentElement' .hide()
+        $ @get 'contentElement' .hide!
         @$!click ->
-            $ view.get 'contentElement' .show()
+            $ view.get 'contentElement' .show!
+            setTimeout (-> this.$ 'input:first' .focus!), 100
         this.$!popover do
             content: $ @get 'contentElement'
             placement: @get 'placement'
