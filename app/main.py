@@ -1,5 +1,9 @@
+# encoding: utf-8
+
 import os
-from flask import Flask, jsonify, request, session, redirect
+from flask import Flask, jsonify, request, session, redirect, render_template, flash, url_for
+from flask.ext.wtf import Form
+from wtforms import TextField, PasswordField, validators
 from models import db, bcrypt, User
 
 def initalize_app():
@@ -14,36 +18,48 @@ def initalize_app():
 
 app = initalize_app()
 
-@app.route('/', methods=['GET'])
+class LoginForm(Form):
+    user_id = TextField(u'Käyttäjätunnus', validators=[validators.Required(u'Käyttäjätunnus on pakollinen.')])
+    password = PasswordField(u'Salasana', validators=[validators.Required(u'Salasana on pakollinen.')])
+
+@app.context_processor
+def inject_user():
+    user_id = session.get('logged_user', None)
+    if user_id:
+        user = User.query.get(user_id)
+        if user:
+            return {'user': user, 'logged_in': True}
+        else:
+            return {}
+    return {}
+
+@app.route('/')
 def index():
-    return redirect('static/index.html')
+    return render_template('main.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=('GET', 'POST'))
 def login():
-    user = User.query.get_or_404(request.form['id'])
-    if user.authenticate(request.form['password']):
-        session['logged_user_id'] = user.id
-        return jsonify()
-    else:
-        return jsonify(error='Incorrect username or password'), 400
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.get(form.user_id.data)
+        if not user:
+            form.user_id.errors = [u'Virheellinen käyttäjätunnus.']
+        elif not user.authenticate(form.password.data):
+            form.password.errors = [u'Virheellinen salasana.']
+        else:
+            flash(u'Olet kirjautunut sisään!')
+            session['logged_user'] = user.id
+            return redirect(url_for('index'))
 
-@app.route('/logout', methods=['POST'])
+    return render_template('login.html', form=form)
+
+@app.route('/logout')
 def logout():
-    del session['logged_user_id']
-    return jsonify()
+    session.pop('logged_user', None)
+    flash(u'Olet kirjautunut ulos!')
+    return redirect(url_for('index'))
 
-@app.route('/logged_user', methods=['GET'])
-def logged_user():
-    if 'logged_user_id' not in session:
-        return jsonify()
-    else:
-        return jsonify(logged_user=session['logged_user_id'])
-
-@app.route('/users/<id>', methods=['GET', 'PUT', 'DELETE'])
-def users(id):
-    if request.method == 'GET':
-        return jsonify(user=User.query.get_or_404(id).dict())
-
+"""
 @app.route('/users', methods=['POST'])
 def user_add():
     json = request.json['user']
@@ -51,6 +67,7 @@ def user_add():
     db.session.add(user)
     db.session.commit()
     return jsonify(user=user.dict()), 200
+"""
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

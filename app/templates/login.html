@@ -1,0 +1,17 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "main.html" %}
+
+{% block header %}
+Kirjaudu sisään
+{% endblock %}
+
+{% block content %}
+<form method="POST" action="" class="form-horizontal">
+    {{ form.csrf_token }}
+    {{ render_field(form.user_id) }}
+    {{ render_field(form.password) }}
+    <div class="form-actions">
+        <input type="submit" value="Kirjaudu sisään" class="btn btn-primary">
+    </div>
+</form>
+{% endblock %}
