@@ -1,0 +1,22 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "main.html" %}
+
+{% block header %}
+Rekisteröidy
+{% endblock %}
+
+{% block content %}
+<p class="lead">
+    Tööttäilyn aloittaminen on vaivatonta - vastaa vaan muutamaan alla olevaan helppoon kysymykseen.
+</p>
+
+<form method="POST" action="" class="form-horizontal">
+    {{ form.csrf_token }}
+    {{ render_field(form.user_id) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.password_confirm) }}
+    <div class="form-actions">
+        <input type="submit" value="Liity joukkoon tummaan" class="btn btn-primary">
+    </div>
+</form>
+{% endblock %}

@@ -1,9 +1,9 @@
 # encoding: utf-8
 
-import os
+import os, string
 from flask import Flask, jsonify, request, session, redirect, render_template, flash, url_for
 from flask.ext.wtf import Form
-from wtforms import TextField, PasswordField, validators
+from wtforms import TextField, PasswordField, validators, ValidationError
 from models import db, bcrypt, User
 
 def initalize_app():
@@ -19,8 +19,28 @@ def initalize_app():
 app = initalize_app()
 
 class LoginForm(Form):
-    user_id = TextField(u'Käyttäjätunnus', validators=[validators.Required(u'Käyttäjätunnus on pakollinen.')])
-    password = PasswordField(u'Salasana', validators=[validators.Required(u'Salasana on pakollinen.')])
+    user_id = TextField(u'Käyttäjätunnus', [validators.Required(u'Käyttäjätunnus on pakollinen.')])
+    password = PasswordField(u'Salasana', [validators.Required(u'Salasana on pakollinen.')])
+
+class RegistrationForm(Form):
+    user_id = TextField(u'Käyttäjätunnus', [
+        validators.Required(u'Käyttäjätunnus on pakollinen.'),
+        validators.Length(min=2, max=20, message=u'Käyttäjätunnuksen pituuden on oltava 2-20 merkkiä.')
+    ])
+    password = PasswordField(u'Salasana', [
+        validators.Required(u'Salasana on pakollinen.'),
+        validators.Length(min=8, message=u'Salasanan pituuden on oltava vähintään 8 merkkiä.')
+    ])
+    password_confirm = PasswordField(u'Salasana uudestaan', [
+        validators.Required(u'Salasanan vahvistus on pakollinen.'),
+        validators.EqualTo('password', message=u'Salasanojen täytyy täsmätä.')
+    ])
+
+    def validate_user_id(form, field):
+        if not all(char in string.lowercase for char in field.data):
+            raise ValidationError(u'Käyttäjätunnuksen täytyy koostua vain pienistä aakkosista a-z.')
+        if User.query.get(form.user_id.data):
+            raise ValidationError(u'Käyttäjätunnus on varattu.')
 
 @app.context_processor
 def inject_user():
@@ -35,7 +55,7 @@ def inject_user():
 
 @app.route('/')
 def index():
-    return render_template('main.html')
+    return render_template('index.html')
 
 @app.route('/login', methods=('GET', 'POST'))
 def login():
@@ -59,15 +79,18 @@ def logout():
     flash(u'Olet kirjautunut ulos!')
     return redirect(url_for('index'))
 
-"""
-@app.route('/users', methods=['POST'])
-def user_add():
-    json = request.json['user']
-    user = User(json['id'], json['password'])
-    db.session.add(user)
-    db.session.commit()
-    return jsonify(user=user.dict()), 200
-"""
+@app.route('/register', methods=('GET', 'POST'))
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        newUser = User(form.user_id.data, form.password.data)
+        db.session.add(newUser)
+        db.session.commit()
+        session['logged_user'] = newUser.id
+        flash(u'Rekisteröityminen onnistui!')
+        return redirect(url_for('index'))
+
+    return render_template('register.html', form=form)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

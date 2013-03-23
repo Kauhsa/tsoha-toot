@@ -7,7 +7,7 @@
 {% endif %}
     <label class="control-label" for="{{ field.id }}">{{ field.label }}</label>
     <div class="controls">
-        {{ field(**kwargs)|safe }}
+        {{ field(**kwargs) }}
         {% if field.errors %}
         <span class="help-inline">{{ field.errors[0] }}</span>
         {% endif %}

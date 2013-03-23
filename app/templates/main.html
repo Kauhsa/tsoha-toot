@@ -14,7 +14,7 @@
             <div class="navbar-inner">
                 <div class="container">
                     {% block navbar %}
-                    <a href="javascript:;" class="brand">Tööt!</a>
+                    <a href="{{ url_for('index') }}" class="brand">Tööt!</a>
                     <ul class="nav">
                     </ul>
                     <ul class="nav pull-right">
@@ -29,7 +29,7 @@
                             </ul>
                         </li>
                         {% else %}
-                        <li><a href="javascript:;">Rekisteröidy</a></li>
+                        <li><a href="{{ url_for('register') }}">Rekisteröidy</a></li>
                         <li><a href="{{ url_for('login') }}">Kirjaudu</a></li>
                         {% endif %}
                     </ul> 
