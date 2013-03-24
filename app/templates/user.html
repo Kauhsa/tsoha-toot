@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+
+{% block header %}
+{{ user.id_repr() }}
+{% endblock %}
+
+{% macro render_tweet(tweet, show_user=True) %}
+<div class="media">
+    <div class="media-body">
+        <h5 class="media-heading">
+            {% if show_user %}
+            {{ tweet.author.id_repr() }}
+            {% endif %}
+            <span class="muted">
+                {{ tweet.natural_timestamp() }}
+            </span>
+        </h5>
+        {{ tweet.content }}
+    </div>    
+</div>
+{% endmacro %}
+
+{% block content %}
+<div class="row">
+    <div class="span2">
+        <h4>Seuraa:</h4>
+        <h4>Seuraajat:</h4>
+    </div>
+    <div class="span5">
+        {% if logged_user == user %}
+            <form class="form" method="POST" action="">
+                {{ tweet_form.csrf_token }}
+                {{ tweet_form.content(placeholder='Tööteti töö!', maxlength=140, class="input-block-level", rows=3) }} 
+                <input class="btn pull-right" type="submit" value="Tööttää!">
+            </form>
+        {% endif %}
+    
+        {% for tweet in user.tweets %}
+            {{ render_tweet(tweet) }}
+        {% endfor %}
+    </div>
+    <div class="span5">
+    </div>
+</div>
+{% endblock %}

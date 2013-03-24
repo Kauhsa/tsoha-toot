@@ -1,10 +1,10 @@
 # encoding: utf-8
 
 import os, string
-from flask import Flask, jsonify, request, session, redirect, render_template, flash, url_for
+from flask import Flask, jsonify, request, session, redirect, render_template, flash, url_for, g
 from flask.ext.wtf import Form
-from wtforms import TextField, PasswordField, validators, ValidationError
-from models import db, bcrypt, User
+from wtforms import TextField, PasswordField, validators, ValidationError, TextAreaField
+from models import db, bcrypt, User, Tweet
 
 def initalize_app():
     app = Flask(__name__)
@@ -37,20 +37,27 @@ class RegistrationForm(Form):
     ])
 
     def validate_user_id(form, field):
-        if not all(char in string.lowercase for char in field.data):
+        if any(char not in string.lowercase for char in field.data):
             raise ValidationError(u'Käyttäjätunnuksen täytyy koostua vain pienistä aakkosista a-z.')
         if User.query.get(form.user_id.data):
             raise ValidationError(u'Käyttäjätunnus on varattu.')
 
-@app.context_processor
-def inject_user():
+class TweetForm(Form):
+    content = TextAreaField(u'Töötti', [validators.Required(u'Töötti on pakollinen.')])
+
+@app.before_request
+def set_logged_user():
     user_id = session.get('logged_user', None)
+    g.logged_user = None
     if user_id:
         user = User.query.get(user_id)
         if user:
-            return {'user': user, 'logged_in': True}
-        else:
-            return {}
+            g.logged_user = user
+
+@app.context_processor
+def inject_user():
+    if g.logged_user:
+        return {'logged_user': g.logged_user, 'logged_in': True}
     return {}
 
 @app.route('/')
@@ -63,9 +70,9 @@ def login():
     if form.validate_on_submit():
         user = User.query.get(form.user_id.data)
         if not user:
-            form.user_id.errors = [u'Virheellinen käyttäjätunnus.']
+            form.user_id.errors = [u'Tuntematon käyttäjätunnus.']
         elif not user.authenticate(form.password.data):
-            form.password.errors = [u'Virheellinen salasana.']
+            form.password.errors = [u'Salasana ei täsmää.']
         else:
             flash(u'Olet kirjautunut sisään!')
             session['logged_user'] = user.id
@@ -83,14 +90,28 @@ def logout():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        newUser = User(form.user_id.data, form.password.data)
-        db.session.add(newUser)
+        new_user = User(form.user_id.data, form.password.data)
+        db.session.add(new_user)
         db.session.commit()
-        session['logged_user'] = newUser.id
+        session['logged_user'] = new_user.id
         flash(u'Rekisteröityminen onnistui!')
         return redirect(url_for('index'))
 
     return render_template('register.html', form=form)
+
+@app.route('/users/<user_id>', methods=('GET', 'POST'))
+def user(user_id):
+    user = User.query.get_or_404(user_id)
+    tweet_form = TweetForm()
+
+    if tweet_form.validate_on_submit() and g.logged_user:
+        tweet = Tweet(g.logged_user, tweet_form.content.data)
+        db.session.add(tweet)
+        db.session.commit()
+        tweet_form.content.data = '' # TODO: keksi siistimpi keino
+        flash(u'Uusi töötti lisätty!')
+
+    return render_template('user.html', user=user, tweet_form=tweet_form)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
