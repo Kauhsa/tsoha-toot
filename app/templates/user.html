@@ -4,9 +4,13 @@
 {{ user.id_repr() }}
 {% endblock %}
 
-{% macro render_tweet(tweet, show_user=True) %}
-<div class="media">
-    <div class="media-body">
+{% macro render_tweet(tweet, show_user=True, is_odd=True) %}
+{% if is_odd %}
+<div class="media" style="margin-top: 5px">
+{% else %}
+<div class="media" style="background-color: #F0F0F0; margin-top: 5px; border-radius: 6px">
+{% endif %}
+    <div class="media-body" style="padding: 8px">
         <h5 class="media-heading">
             {% if show_user %}
             {{ tweet.author.id_repr() }}
@@ -36,7 +40,7 @@
         {% endif %}
     
         {% for tweet in user.tweets %}
-            {{ render_tweet(tweet) }}
+            {{ render_tweet(tweet, False, loop.cycle(True, False)) }}
         {% endfor %}
     </div>
     <div class="span5">
