@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="19cm" height="9cm" viewBox="311 388 373 172" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="331" y="388" width="138.8" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="331" y="388" width="138.8" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="400.4" y="402">Käyttäjä</text>
+    <rect style="fill: #ffffff" x="331" y="406" width="138.8" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="331" y="406" width="138.8" height="52"/>
+    <polygon style="fill: #000000" points="334,416 336,419 338,416 336,413 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="340" y="422">Käyttäjätunnus</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="340" y1="423.6" x2="462.8" y2="423.6"/>
+    <ellipse style="fill: #000000" cx="336" cy="432" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="340" y="438">Salasana</text>
+    <ellipse style="fill: #000000" cx="336" cy="448" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="340" y="454">Sähköpostiosoite</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="601" y="404" width="82.4" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="601" y="404" width="82.4" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="642.2" y="418">Viesti</text>
+    <rect style="fill: #ffffff" x="601" y="422" width="82.4" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="601" y="422" width="82.4" height="36"/>
+    <polygon style="fill: #000000" points="604,432 606,435 608,432 606,429 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="610" y="438">Tunniste</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="610" y1="439.6" x2="676.4" y2="439.6"/>
+    <ellipse style="fill: #000000" cx="606" cy="448" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="610" y="454">Sisältö</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="615" y="522" width="54.2" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="615" y="522" width="54.2" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="642.1" y="536">Tägi</text>
+    <rect style="fill: #ffffff" x="615" y="540" width="54.2" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="615" y="540" width="54.2" height="20"/>
+    <polygon style="fill: #000000" points="618,550 620,553 622,550 620,547 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="624" y="556">Nimi</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="624" y1="557.6" x2="662.2" y2="557.6"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="601,432 601,432 476.972,432 "/>
+    <polygon style="fill: #000000" points="469.8,432 474.8,427 479.8,432 474.8,437 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="469.8,432 474.8,427 479.8,432 474.8,437 "/>
+    <text font-size="9.59961" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="597" y="428">n</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="642.2,458 642.2,490 642.1,490 642.1,522 "/>
+    <text font-size="9.59961" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="646.2" y="470">n</text>
+    <text font-size="9.59961" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="646.1" y="518">n</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="365.7,458 365.7,478 311,478 311,432 331,432 "/>
+    <text font-size="9.59961" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="369.7" y="470">n</text>
+    <text font-size="9.59961" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="327" y="428">n</text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="312" y="493">
+    <tspan x="312" y="493">Seuratut käyttäjät</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="499" y="423">
+    <tspan x="499" y="423">kirjoittaja</tspan>
+  </text>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="469.8,448 469.8,448 601,448 601,448 "/>
+    <text font-size="9.59961" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="473.8" y="444">n</text>
+    <text font-size="9.59961" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="597" y="444">n</text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="510" y="462">
+    <tspan x="510" y="462">viittaus</tspan>
+  </text>
+</svg>

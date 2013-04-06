@@ -1,4 +1,8 @@
 *.pyc
 *.swp
 *~
+*.aux
+*.log
+*.out
+*.toc
 app/database

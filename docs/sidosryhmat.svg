@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="35cm" height="13cm" viewBox="463 532 696 243" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="748" y="598.25" width="124" height="56"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="748" y="598.25" width="124" height="56"/>
+    <text font-size="13.9869" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="810" y="630.158">
+      <tspan x="810" y="630.158">Tööt!</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 1094.9 533.25 L 1147.1,533.25 L 1157.54,545.75 L 1147.1,558.25 L 1094.9,558.25 L 1084.46,545.75 L 1094.9,533.25z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 1094.9 533.25 L 1147.1,533.25 L 1157.54,545.75 L 1147.1,558.25 L 1094.9,558.25 L 1084.46,545.75 L 1094.9,533.25"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1121" y="548.95">
+      <tspan x="1121" y="548.95">Käyttäjä</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="1134.05,558.25 1134.05,640.25 878.705,640.25 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="891.353,635.25 875.353,640.25 891.353,645.25 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1003.03" y="637.25">Viestin kirjoittaminen</text>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 598.429 698.25 L 660.571,698.25 L 673,712.75 L 660.571,727.25 L 598.429,727.25 L 586,712.75 L 598.429,698.25z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 598.429 698.25 L 660.571,698.25 L 673,712.75 L 660.571,727.25 L 598.429,727.25 L 586,712.75 L 598.429,698.25"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="629.5" y="715.95">
+      <tspan x="629.5" y="715.95">Ylläpito</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="629.5,727.25 629.5,755.25 810,755.25 810,660.955 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="815,673.603 810,657.603 805,673.603 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="719.75" y="752.25">Viestien ylläpito</text>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 485.85 566.25 L 589.15,566.25 L 609.81,577.25 L 589.15,588.25 L 485.85,588.25 L 465.19,577.25 L 485.85,566.25z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 485.85 566.25 L 589.15,566.25 L 609.81,577.25 L 589.15,588.25 L 485.85,588.25 L 465.19,577.25 L 485.85,566.25"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="537.5" y="580.45">
+      <tspan x="537.5" y="580.45">Internetin selaaja</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="1107.95,558.25 1107.95,612.25 878.705,612.25 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="891.353,607.25 875.353,612.25 891.353,617.25 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="989.975" y="609.25">Käyttäjien seuraaminen</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="537.5,588.25 537.5,640.25 741.295,640.25 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="728.647,645.25 744.647,640.25 728.647,635.25 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="642.75" y="637.25">Viestien lukeminen</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="563.325,588.25 563.325,612.25 741.295,612.25 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="728.647,617.25 744.647,612.25 728.647,607.25 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="655.663" y="609.25">Seinän katselu</text>
+  </g>
+</svg>

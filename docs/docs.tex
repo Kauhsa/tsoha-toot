@@ -1,0 +1,143 @@
+\documentclass{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[finnish]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{enumitem}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.1in}
+
+\begin{document}
+\title{Aineopintojen harjoitustyö: Tietokantasovellus \\ Twitter-kloonin dokumentaatio}
+\author{Mika Viinamäki}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Johdanto}
+
+\subsection {Järjestelmän tarkoitus}
+Järjestelmän tarkoitus on olla yksinkertainen kopio Twitterin tarjoamasta mikroblogista. Käytännössä käyttäjät voivat lähettää enintään 140 merkin pituisia viestejä omalle sivulleen ja halutessaan lisätä niihin "hashtageja" lisäämällä jonkin viestin sanan eteen \verb+#+-merkin tai viittauksia muihin palvelun käyttäjiin lisäämällä käyttäjätunnuksen eteen \verb+@+-merkin.
+
+Käyttäjä pystyy myös seuraamaan muita käyttäjiä, jolloin niiden viestit näkyvät omalla sivulla. Myös viestit, joissa käyttäjää on viitattu, näkyvät samalla sivulla -- tämä toiminnallisuus eroaa jonkin verran Twitterin vastaavasta.
+
+\subsection{Toimintaympäristö}
+Järjestelmä on toteutettu Pythonilla Linux-ympäristössä käyttäen apuna Flask-sovelluskehystä, ja vaatii siis toimiakseen Pythonia tukevan ympäristön. Tietokantanaan se pystyy käyttämään ainakin SQLite:a ja PostgreSQL:aa, todennäköisesti muutkin järjestelmän käyttämän SQLAlchemy-kirjaston tukemat tietokannat toimivat.
+
+Järjestelmä on suunniteltu toimimaan Heroku-palvelussa suoraan.
+
+\subsection{Rajaukset}
+Järjestelmään ei varmaankaan tulla toteuttamaan mitään ylläpitotoimintoja.
+
+\section{Yleiskuva järjestelmästä}
+
+\subsection{Sidosryhmäkaavio}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{sidosryhmat.pdf}
+\end{figure}
+
+\subsection{Käyttäjäryhmät}
+
+\begin{description}
+    \item[Internetin selaaja] Satunnainen, sivulle jostain syystä eksynyt internetin käyttäjä, joka on kiinnostunut käyttäjien kirjoittamista viesteistä.    
+    \item[Käyttäjä] Palveluun rekisteröitynyt käyttäjä, joka haluaa lähettää palveluun viestejään.
+    \item[Ylläpito] Palvelun toiminnasta huolehtivat henkilöt.
+\end{description}
+
+\section{Käyttötapaukset}
+
+\subsection{Internetin selaaja}
+
+\subsubsection{Käyttäjän viestien katseleminen}
+Kuka tahansa voi katsella jonkun tietyn käyttäjän lähettämiä viestejä.
+
+\subsubsection{Käyttäjän seinän katseleminen}
+Kuka tahansa pystyy katselemaan kenen tahansa käyttäjän seinää, jossa näkyy käyttäjän seuraamien käyttäjien lähettämät viestit ja viestit, jossa kyseinen käyttäjä on mainittu.
+
+\subsubsection{Tietyn hashtagin sisältävien viestien katseleminen}
+Kuka tahansa pystyy katselemaan viestejä, joissa jokin tietty hashtag on mainittu.
+
+\subsection{Käyttäjä}
+
+\subsubsection{Viestin lähettäminen}
+Käyttäjä pystyy lähettämään maksimissaan 140-merkkisen viestin palveluun. Viestissä voi olla hashtageja, linkkejä tai viittauksia muihin palvelun käyttäjiin.
+
+\subsubsection{Käyttäjän seuraaminen ja seuraamisen poistaminen}
+Käyttäjä pystyy asettamaan jonkun toisen käyttäjän seuratuksi ja poistamaan seurauksen.
+
+\subsubsection{Oman viestin poistaminen}
+Käyttäjä voi poistaa lähettämänsä viestin palvelusta.
+
+\subsection{Ylläpitäjä}
+Ylläpitäjältä ei varmaankaan toteuteta mitään käyttötapauksia.
+
+\section{Järjestelmän tietosisältö}
+
+\subsection{Tietosisältökaavio}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{tietosisalto.pdf}
+\end{figure}
+
+\subsection{Tietokohteiden kuvaukset}
+
+\subsubsection{Käyttäjä}
+
+Palveluun rekisteröinyt käyttäjä. Yksi käyttäjä voi olla lähettänyt palveluun useita viestejä. Lisäksi käyttäjään voi liittyä useita muita käyttäjiä, joita hän seuraa.
+
+\begin{description}[itemsep=0pt]
+    \item[Attribuutti] Käyttäjätunnus
+    \item[Arvojoukko] Pienistä kirjaimista koostuva 6-20 merkkiä pitkä merkkijono.
+    \item[Kuvailu] Käyttäjän palvelussa käyttämä uniikki käyttäjätunnus.
+\end{description}
+
+\begin{description}[itemsep=0pt]
+    \item[Attribuutti] Salasana
+    \item[Arvojoukko] Salasanasta muodostettu bcrypt-hash.
+    \item[Kuvailu] Käyttäjän kirjautumiseen käyttämä salasana.
+\end{description}
+
+\begin{description}[itemsep=0pt]
+    \item[Attribuutti] Sähköpostiosoite
+    \item[Arvojoukko] Validi sähköpostiosoite merkkijonona.
+    \item[Kuvailu] Käyttäjän sähköpostiosoite.
+\end{description}
+
+
+\subsubsection{Viesti}
+
+Käyttäjän palveluun lähettämä viesti. Viesti kuuluu aina jollekin käyttäjälle. Lisäksi viestiin voi liittyä erilaisia tägejä. Lisäksi viestissä voi olla viittaus useaan käyttäjään. Tägit ja viittaukset voidaan päätellä viestin sisällöstä - ne on merkitty sisältöön laittamalla sanan eteen tägin tapauksessa \verb+#+-merkin ja viittauksen tapauksessa \verb+@+-merkin.
+
+\begin{description}[itemsep=0pt]
+    \item[Attribuutti] Tunniste
+    \item[Arvojoukko] Uniikki numero.
+    \item[Kuvailu] Viestin numeromuotoinen yksilöivä tunniste.
+\end{description}
+
+\begin{description}[itemsep=0pt]
+    \item[Attribuutti] Sisältö
+    \item[Arvojoukko] Merkkijono, enintään 140 merkkiä.
+    \item[Kuvailu] Viestin sisältö.
+\end{description}
+
+\subsubsection{Tägi}
+
+Viestiin liittyvä tägi. Sama tägi voi liittyä useaan viestiin, ja yhteen viestiin voi liittyä useita tageja.
+
+\begin{description}[itemsep=0pt]
+    \item[Attribuutti] Nimi
+    \item[Arvojoukko] Uniikki, pienistä kirjaimista koostuva, enintään 140 merkkiä pitkä merkkijono.
+    \item[Kuvailu] Tägin nimi.
+\end{description}
+
+\end{document}
