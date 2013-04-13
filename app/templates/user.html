@@ -51,11 +51,15 @@
 
     <div class="span5">
         {% if logged_user_profile %}
-            <form class="form" method="POST" action="">
-                {{ tweet_form.csrf_token }}
-                {{ tweet_form.content(placeholder='Tööteti töö!', maxlength=140, class="input-block-level", rows=3) }} 
-                <input class="btn btn-primary pull-right" type="submit" value="Tööttää!">
-            </form>
+            <div class="well">
+                <form class="form" method="POST" action="">
+                    {{ tweet_form.csrf_token }}
+                    {{ tweet_form.content(placeholder='Tööteti töö!', maxlength=140, class="input-block-level", rows=3) }} 
+                    <div style="padding-bottom: 1px">
+                        <input class="btn btn-primary pull-right" type="submit" value="Tööttää!">
+                    </div>
+                </form>
+            </div>
         {% endif %}
         
 

@@ -74,7 +74,7 @@ def index():
 
     latest_tweets = Tweet.query.order_by(Tweet.timestamp.desc()).limit(5).all()
     tags = db.session.query(taggings.c.tag_id, func.count().label('count')).group_by('tag_id').order_by(desc('count')).limit(50).all()
-    followed = User.query.add_columns(func.count().label('count')).join(follows, follows.c.followed_id == User.id).group_by(User).order_by(desc('count')).limit(15).all()
+    followed = User.query.add_columns(func.count().label('count')).join(follows, follows.c.followed_id == User.id).group_by(User).order_by(desc('count')).limit(20).all()
     return render_template('index.html', latest_tweets=latest_tweets, tagcloud=tagcloud(tags), followed=followed)
 
 
