@@ -7,6 +7,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
         <link href='{{ url_for('static', filename='css/bootstrap.min.css') }}' rel='stylesheet' type='text/css'>
+        <link href='{{ url_for('static', filename='css/own.css') }}' rel='stylesheet' type='text/css'>
     </head>
     <body style="padding-top: 60px">
         <div class="navbar navbar-fixed-top">
@@ -20,6 +21,7 @@
                         {% if logged_in %}
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                                <img src="{{ logged_user.email | gravatar(size=18) }}" class="img-rounded menu-avatar">
                                 <strong>{{ logged_user.id_repr() }}</strong>
                                 <b class="caret"></b>
                             </a>
@@ -41,7 +43,7 @@
         <div class="container">
             {% block container %}
             <div class="page-header">
-                <h1>{% block header %}{% endblock %}</h1>
+                {% block pre_header %}{% endblock %}<h1>{% block header %}{% endblock %}</h1>
             </div>
 
             {% for message in get_flashed_messages() %}

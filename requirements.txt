@@ -1,5 +1,6 @@
 Flask==0.9
 Flask-Bcrypt==0.5.2
+Flask-Gravatar==0.3.0
 Flask-SQLAlchemy==0.16
 Flask-WTF==0.8.3
 Jinja2==2.6

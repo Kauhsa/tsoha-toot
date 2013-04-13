@@ -13,6 +13,7 @@ Rekisteröidy
 <form method="POST" action="" class="form-horizontal">
     {{ form.csrf_token }}
     {{ render_field(form.user_id) }}
+    {{ render_field(form.email) }}
     {{ render_field(form.password) }}
     {{ render_field(form.password_confirm) }}
     <div class="form-actions">

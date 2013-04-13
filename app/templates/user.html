@@ -6,10 +6,13 @@
 
 {% macro render_tweet(tweet, show_user=True, is_odd=True) %}
 {% if is_odd %}
-<div class="media" style="margin-top: 5px">
+<div class="media" style="margin-top: 5px; border-radius: 6px">
 {% else %}
 <div class="media" style="background-color: #F0F0F0; margin-top: 5px; border-radius: 6px">
 {% endif %}
+    <a class="pull-left" href="javascript:;">
+        <img class="media-object" src="{{ tweet.author.email | gravatar(size=64) }}">
+    </a>
     <div class="media-body" style="padding: 8px">
         <h5 class="media-heading">
             {% if show_user %}
@@ -27,6 +30,7 @@
 {% block content %}
 <div class="row">
     <div class="span2">
+        <img src="{{ logged_user.email | gravatar(size=128) }}" class="img-polaroid">
         <h4>Seuraa:</h4>
         <h4>Seuraajat:</h4>
     </div>

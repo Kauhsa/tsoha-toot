@@ -1,10 +1,11 @@
 # encoding: utf-8
 
-import os, string
-from flask import Flask, jsonify, request, session, redirect, render_template, flash, url_for, g
-from flask.ext.wtf import Form
-from wtforms import TextField, PasswordField, validators, ValidationError, TextAreaField
+import os
+from flask import Flask, session, redirect, render_template, flash, url_for, g
+from flaskext.gravatar import Gravatar
 from models import db, bcrypt, User, Tweet
+from forms import LoginForm, RegistrationForm, TweetForm
+
 
 def initalize_app():
     app = Flask(__name__)
@@ -14,36 +15,11 @@ def initalize_app():
     )
     bcrypt.init_app(app)
     db.init_app(app)
+    Gravatar(app, size=100, rating='g', default='retro', force_default=False, force_lower=False)
     return app
 
 app = initalize_app()
 
-class LoginForm(Form):
-    user_id = TextField(u'Käyttäjätunnus', [validators.Required(u'Käyttäjätunnus on pakollinen.')])
-    password = PasswordField(u'Salasana', [validators.Required(u'Salasana on pakollinen.')])
-
-class RegistrationForm(Form):
-    user_id = TextField(u'Käyttäjätunnus', [
-        validators.Required(u'Käyttäjätunnus on pakollinen.'),
-        validators.Length(min=2, max=20, message=u'Käyttäjätunnuksen pituuden on oltava 2-20 merkkiä.')
-    ])
-    password = PasswordField(u'Salasana', [
-        validators.Required(u'Salasana on pakollinen.'),
-        validators.Length(min=8, message=u'Salasanan pituuden on oltava vähintään 8 merkkiä.')
-    ])
-    password_confirm = PasswordField(u'Salasana uudestaan', [
-        validators.Required(u'Salasanan vahvistus on pakollinen.'),
-        validators.EqualTo('password', message=u'Salasanojen täytyy täsmätä.')
-    ])
-
-    def validate_user_id(form, field):
-        if any(char not in string.lowercase for char in field.data):
-            raise ValidationError(u'Käyttäjätunnuksen täytyy koostua vain pienistä aakkosista a-z.')
-        if User.query.get(form.user_id.data):
-            raise ValidationError(u'Käyttäjätunnus on varattu.')
-
-class TweetForm(Form):
-    content = TextAreaField(u'Töötti', [validators.Required(u'Töötti on pakollinen.')])
 
 @app.before_request
 def set_logged_user():
@@ -54,15 +30,18 @@ def set_logged_user():
         if user:
             g.logged_user = user
 
+
 @app.context_processor
 def inject_user():
     if g.logged_user:
         return {'logged_user': g.logged_user, 'logged_in': True}
     return {}
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/login', methods=('GET', 'POST'))
 def login():
@@ -80,17 +59,19 @@ def login():
 
     return render_template('login.html', form=form)
 
+
 @app.route('/logout')
 def logout():
     session.pop('logged_user', None)
     flash(u'Olet kirjautunut ulos!')
     return redirect(url_for('index'))
 
+
 @app.route('/register', methods=('GET', 'POST'))
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        new_user = User(form.user_id.data, form.password.data)
+        new_user = User(form.user_id.data, form.email.data, form.password.data)
         db.session.add(new_user)
         db.session.commit()
         session['logged_user'] = new_user.id
@@ -98,6 +79,7 @@ def register():
         return redirect(url_for('index'))
 
     return render_template('register.html', form=form)
+
 
 @app.route('/users/<user_id>', methods=('GET', 'POST'))
 def user(user_id):
@@ -108,7 +90,7 @@ def user(user_id):
         tweet = Tweet(g.logged_user, tweet_form.content.data)
         db.session.add(tweet)
         db.session.commit()
-        tweet_form.content.data = '' # TODO: keksi siistimpi keino
+        tweet_form.content.data = ''  # TODO: keksi siistimpi keino
         flash(u'Uusi töötti lisätty!')
 
     return render_template('user.html', user=user, tweet_form=tweet_form)
