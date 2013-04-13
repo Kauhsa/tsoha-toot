@@ -63,14 +63,15 @@ class Tweet(db.Model):
     author_id = db.Column(db.String(20), db.ForeignKey('user.id'))
     author = db.relationship('User',
                              backref=db.backref('tweets',
-                             lazy='dynamic',
-                             order_by=timestamp.desc()))
+                                                lazy='dynamic',
+                                                order_by=timestamp.desc()))
     mentions = db.relationship('User',
                                secondary=mentions,
                                backref='mentioned_in')
     tags = db.relationship('Tag',
                            secondary=taggings,
-                           backref="tweets")
+                           backref=db.backref('tweets',
+                                              order_by=timestamp.desc()))
 
     def _parse_mentions(self):
         return [user.lower() for user in re.findall(r'@([a-zA-Z]+)', self.content)]
