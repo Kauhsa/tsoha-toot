@@ -56,7 +56,7 @@ def tweet_content(s):
 
     content = Markup.escape(s)
     content = Markup(re.sub(r'@([a-zA-Z]+)', user_url, content))
-    content = Markup(re.sub(r'#([a-zA-Z0-9_]+)', tag_url, content))
+    content = Markup(re.sub(r'(?<!&)#([a-zA-Z0-9_]+)', tag_url, content))
     return content
 
 
