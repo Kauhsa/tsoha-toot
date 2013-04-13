@@ -1,16 +1,20 @@
 # encoding: utf-8
 
 import os
+import re
 from flask import Flask, session, redirect, render_template, flash, url_for, g
 from flaskext.gravatar import Gravatar
 from models import db, bcrypt, User, Tweet
+from timesince import timesince
 from forms import LoginForm, RegistrationForm, TweetForm
+from jinja2 import Markup
 
 
 def initalize_app():
     app = Flask(__name__)
     app.config.update(
         SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL', 'sqlite:///database'),
+        SQLALCHEMY_ECHO=True,
         SECRET_KEY="top secret okay"
     )
     bcrypt.init_app(app)
@@ -36,6 +40,21 @@ def inject_user():
     if g.logged_user:
         return {'logged_user': g.logged_user, 'logged_in': True}
     return {}
+
+
+@app.template_filter('tweet_content')
+def tweet_content(s):
+    def user_url(match):
+        user_id = match.group(1)
+        return Markup(u'<a href="%s">@%s</a>') % (Markup.escape(url_for('user', user_id=user_id)), Markup.escape(user_id))
+
+    content = Markup.escape(s)
+    return Markup(re.sub(r'@([a-zA-Z]+)', user_url, content))
+
+
+@app.template_filter('timesince')
+def ts(s):
+    return timesince(s)
 
 
 @app.route('/')

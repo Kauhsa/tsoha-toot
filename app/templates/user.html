@@ -6,29 +6,6 @@
 
 {% set logged_user_profile = user == logged_user %}
 
-{% macro render_tweet(tweet, show_user=True, is_odd=True) %}
-<div class="media tweet {% if not is_odd %} even {% endif %}">
-    <a class="pull-left" href="javascript:;">
-        <img class="media-object img-rounded" src="{{ tweet.author.email | gravatar(size=64) }}">
-    </a>
-    <div class="media-body" style="padding: 8px">
-        <h5 class="media-heading">
-            {% if show_user %}
-            {{ tweet.author.id_repr() }}
-            {% endif %}
-            <span class="muted">
-                {{ tweet.natural_timestamp() }}
-            </span>
-        </h5>
-        {{ tweet.content }}
-    </div>    
-</div>
-{% endmacro %}
-
-{% macro user_link(user) %}
-<a href="{{ url_for('user', user_id=user.id) }}">{{ user.id_repr() }}</a>
-{% endmacro %}
-
 {% block content %}
 <div class="row">
     <div class="span2">
@@ -42,38 +19,34 @@
         {% endif %}
 
         <h4>Seuraa:</h4>
-        {% if user.following %}
-            <ul class="nav nav-pills nav-stacked">
-                {% for followed_user in user.following %}
-                    <li>{{ user_link(followed_user) }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="muted">
-                {% if logged_user_profile %}
-                    Et seuraa ketään!
-                {% else %}
-                    Käyttäjä ei seuraa ketään.
-                {% endif %}
-            </p>
-        {% endif %}
+        <ul class="nav nav-pills nav-stacked">
+            {% for followed_user in user.following %}
+                <li>{{ user_link(followed_user) }}</li>
+            {% else %}
+                <li><p class="muted">
+                    {% if logged_user_profile %}
+                        Et seuraa ketään.
+                    {% else %}
+                        Käyttäjä ei seuraa ketään.
+                    {% endif %}
+                </p></li>
+            {% endfor %}
+        </ul>
         
         <h4>Seuraajat:</h4>
-        {% if user.followers %}
-            <ul class="nav nav-pills nav-stacked">
-                {% for following_user in user.followers %}
-                    <li>{{ user_link(following_user) }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p class="muted">
-                {% if logged_user_profile %}
-                    Kukaan ei seuraa sinua!
-                {% else %}
-                    Kukaan ei seuraa käyttäjää.
-                {% endif %}
-            </p>
-        {% endif %}
+        <ul class="nav nav-pills nav-stacked">
+            {% for following_user in user.followers %}
+                <li>{{ user_link(following_user) }}</li>
+            {% else %}
+                <li><p class="muted">
+                    {% if logged_user_profile %}
+                        Kukaan ei seuraa sinua.
+                    {% else %}
+                        Kukaan ei seuraa käyttäjää.
+                    {% endif %}
+                </p></li>
+            {% endfor %}
+        </ul>
     </div>
 
     <div class="span5">
@@ -89,11 +62,18 @@
         <h3>Töötit:</h3>
         {% for tweet in user.tweets %}
             {{ render_tweet(tweet, False, loop.cycle(True, False)) }}
+        {% else %}
+            <p class="muted">Ei tööttejä!</p>
         {% endfor %}
     </div>
 
     <div class="span5">
         <h3>Seinä:</h3>
+        {% for tweet in user.wall() %}
+            {{ render_tweet(tweet, True, loop.cycle(True, False)) }}
+        {% else %}
+            <p class="muted">Ei tööttejä!</p>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

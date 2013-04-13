@@ -1,0 +1,22 @@
+{% macro render_tweet(tweet, show_user=True, is_odd=True) %}
+    <div class="media tweet {% if not is_odd %} even {% endif %}">
+        <a class="pull-left" href="{{ url_for('user', user_id=tweet.author.id) }}">
+            <img class="media-object img-rounded" src="{{ tweet.author.email | gravatar(size=64) }}">
+        </a>
+        <div class="media-body" style="padding: 8px">
+            <h5 class="media-heading">
+                {% if show_user %}
+                {{ user_link(tweet.author) }}
+                {% endif %}
+                <span class="muted">
+                    {{ tweet.timestamp | timesince }}
+                </span>
+            </h5>
+            {{ tweet.content | tweet_content }}
+        </div>    
+    </div>
+{% endmacro %}
+
+{% macro user_link(user) %}
+    <a href="{{ url_for('user', user_id=user.id) }}">{{ user.id_repr() }}</a>
+{% endmacro %}

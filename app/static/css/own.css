@@ -1,12 +1,13 @@
 .menu-avatar {
     margin-right: 4px;
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 .tweet {
     margin-top: 5px;
     border-radius: 6px;
     word-wrap: break-word;
+    padding: 7px;
 }
 
 .tweet.even {
