@@ -74,10 +74,10 @@ class Tweet(db.Model):
                                               order_by=timestamp.desc()))
 
     def _parse_mentions(self):
-        return [user.lower() for user in re.findall(r'@([a-zA-Z]+)', self.content)]
+        return set(user.lower() for user in re.findall(r'@([a-zA-Z]+)', self.content))
 
     def _parse_tags(self):
-        return [tag.lower() for tag in re.findall(r'#([a-zA-Z0-9_]+)', self.content)]
+        return set(tag.lower() for tag in re.findall(r'#([a-zA-Z0-9_]+)', self.content))
 
     def __init__(self, author, content):
         self.author = author
