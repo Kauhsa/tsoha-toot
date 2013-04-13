@@ -69,8 +69,8 @@ class Tweet(db.Model):
                                secondary=mentions,
                                backref='mentioned_in')
     tags = db.relationship('Tag',
-                               secondary=taggings,
-                               backref="tweets")
+                           secondary=taggings,
+                           backref="tweets")
 
     def _parse_mentions(self):
         return [user.lower() for user in re.findall(r'@([a-zA-Z]+)', self.content)]
