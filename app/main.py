@@ -73,7 +73,7 @@ def index():
         return tags
 
     latest_tweets = Tweet.query.order_by(Tweet.timestamp.desc()).limit(5).all()
-    tags = db.session.query(taggings, func.count().label('count')).join(Tag).group_by('tag_id').order_by(desc('count')).limit(50).all()
+    tags = db.session.query(taggings, func.count().label('count')).group_by('tag_id').join(Tag).order_by(desc('count')).limit(50).all()
     return render_template('index.html', latest_tweets=latest_tweets, tagcloud=tagcloud(tags))
 
 
