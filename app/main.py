@@ -16,6 +16,7 @@ def initalize_app():
     app.config.update(
         SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL', 'sqlite:///database'),
         SQLALCHEMY_ECHO=True,
+        DEBUG=True if os.environ.get('DEBUG', 'false') == 'true' else False,
         SECRET_KEY="top secret okay"
     )
     bcrypt.init_app(app)
@@ -73,7 +74,6 @@ def index():
 
     latest_tweets = Tweet.query.order_by(Tweet.timestamp.desc()).limit(5).all()
     tags = db.session.query(taggings, func.count().label('count')).join(Tag).group_by('tag_id').order_by(desc('count')).limit(50).all()
-    #raise
     return render_template('index.html', latest_tweets=latest_tweets, tagcloud=tagcloud(tags))
 
 
