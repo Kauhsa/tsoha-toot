@@ -14,6 +14,7 @@ Tervetuloa Tööttiin!
             <p class="muted">Ei tööttejä!</p>
         {% endfor %}
     </div>
+    
     <div class="span4">
         <h3>Tagit:</h3>
         {% for tag in tagcloud %}
@@ -23,8 +24,17 @@ Tervetuloa Tööttiin!
             </a>
         {% endfor %}
     </div>
+    
     <div class="span4">
         <h3>Seuratuimmat:</h3>
+
+        <ul class="nav nav-pills nav-stacked">
+        {% for user in followed %}
+            <li>{{ user_link(user[0], avatar=True) }}</li>
+        {% else %}
+            <li><p class="muted">Ketään ei seurata!</p></li> 
+        {% endfor %}
+        </ul>        
     </div>
 </div>
 {% endblock %}

@@ -6,7 +6,7 @@ from flask import Flask, session, redirect, render_template, flash, url_for, g
 from flaskext.gravatar import Gravatar
 from jinja2 import Markup
 from sqlalchemy import func, desc
-from models import db, bcrypt, User, Tweet, Tag, taggings
+from models import db, bcrypt, User, Tweet, Tag, taggings, follows
 from timesince import timesince
 from forms import LoginForm, RegistrationForm, TweetForm
 
@@ -74,7 +74,8 @@ def index():
 
     latest_tweets = Tweet.query.order_by(Tweet.timestamp.desc()).limit(5).all()
     tags = db.session.query(taggings.c.tag_id, func.count().label('count')).group_by('tag_id').order_by(desc('count')).limit(50).all()
-    return render_template('index.html', latest_tweets=latest_tweets, tagcloud=tagcloud(tags))
+    followed = User.query.add_columns(func.count().label('count')).join(follows, follows.c.followed_id == User.id).group_by(User).order_by(desc('count')).limit(15).all()
+    return render_template('index.html', latest_tweets=latest_tweets, tagcloud=tagcloud(tags), followed=followed)
 
 
 @app.route('/login', methods=('GET', 'POST'))

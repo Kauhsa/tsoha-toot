@@ -24,7 +24,7 @@
                         {% if logged_in %}
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
-                                <img src="{{ logged_user.email | gravatar(size=18) }}" class="img-rounded menu-avatar">
+                                <img src="{{ logged_user.email | gravatar(size=20) }}" class="img-rounded menu-avatar">
                                 <strong>{{ logged_user.id_repr() }}</strong>
                                 <b class="caret"></b>
                             </a>
