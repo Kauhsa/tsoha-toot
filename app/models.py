@@ -18,7 +18,7 @@ follows = db.Table('follows',
 
 mentions = db.Table('mentions',
                     db.Column('tweet_id', db.Integer(), db.ForeignKey('tweet.id')),
-                    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')))
+                    db.Column('user_id', db.String(20), db.ForeignKey('user.id')))
 
 taggings = db.Table('taggings',
                     db.Column('tweet_id', db.Integer(), db.ForeignKey('tweet.id')),
