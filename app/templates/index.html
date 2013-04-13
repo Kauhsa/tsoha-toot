@@ -17,7 +17,7 @@ Tervetuloa Tööttiin!
     <div class="span4">
         <h3>Tagit:</h3>
         {% for tag in tagcloud %}
-            {% set size = 200 * tag[1] %}
+            {% set size = 50 * tag[1] %}
             <a class="tag" style="font-size: {{ size }}px" href="{{ url_for('tag', tag_id=tag[0]) }}">
                 #{{ tag[0] }}
             </a>
