@@ -81,7 +81,7 @@ def register():
     return render_template('register.html', form=form)
 
 
-@app.route('/users/<user_id>', methods=('GET', 'POST'))
+@app.route('/user/<user_id>', methods=('GET', 'POST'))
 def user(user_id):
     user = User.query.get_or_404(user_id)
     tweet_form = TweetForm()
@@ -94,6 +94,38 @@ def user(user_id):
         flash(u'Uusi töötti lisätty!')
 
     return render_template('user.html', user=user, tweet_form=tweet_form)
+
+
+@app.route('/follow/<user_id>', methods=('GET',))
+def follow(user_id):
+    user = User.query.get_or_404(user_id)
+
+    if user in g.logged_user.following:
+        flash(u'Seuraat jo tätä käyttäjää!')
+    elif g.logged_user == user:
+        flash(u'Et voi seurata itseäsi!')
+    else:
+        g.logged_user.following.append(user)
+        db.session.add(g.logged_user)
+        db.session.commit()
+        flash(u'Käyttäjä %s lisätty seurattujen listalle!' % user.id_repr())
+
+    return redirect(url_for('user', user_id=user_id))
+
+
+@app.route('/unfollow/<user_id>', methods=('GET',))
+def unfollow(user_id):
+    user = User.query.get_or_404(user_id)
+
+    if user not in g.logged_user.following:
+        flash(u'Et seuraa tätä käyttäjää!')
+    else:
+        g.logged_user.following.remove(user)
+        db.session.add(g.logged_user)
+        db.session.commit()
+        flash(u'Käyttäjän %s seuraaminen lopetettu!' % user.id_repr())
+
+    return redirect(url_for('user', user_id=user_id))
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

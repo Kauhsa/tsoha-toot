@@ -1,3 +1,14 @@
 .menu-avatar {
     margin-right: 4px;
+    border-radius: 2px;
+}
+
+.tweet {
+    margin-top: 5px;
+    border-radius: 6px;
+    word-wrap: break-word;
+}
+
+.tweet.even {
+    background-color: #F0F0F0; 
 }

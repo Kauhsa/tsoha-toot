@@ -11,10 +11,20 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 
 
+follows = db.Table('follows',
+                   db.Column('follower_id', db.String(20), db.ForeignKey('user.id')),
+                   db.Column('followed_id', db.String(20), db.ForeignKey('user.id')))
+
+
 class User(db.Model):
     id = db.Column(db.String(20), primary_key=True)
     email = db.Column(db.String(254))
     pw_hash = db.Column(db.String(60))
+    following = db.relationship('User',
+                                secondary=follows,
+                                backref='followers',
+                                primaryjoin=id == follows.c.follower_id,
+                                secondaryjoin=id == follows.c.followed_id)
 
     def __init__(self, id, email, password):
         self.id = id
@@ -26,6 +36,9 @@ class User(db.Model):
 
     def authenticate(self, password):
         return bcrypt.check_password_hash(self.pw_hash, password)
+
+    def does_follow(self, user):
+        return user in self.following
 
 
 class Tweet(db.Model):
