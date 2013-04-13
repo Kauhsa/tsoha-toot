@@ -18,3 +18,7 @@
     margin: 5px 10px;
     display: inline-block;
 }
+
+.space-bottom {
+    margin-bottom: 20px;
+}
