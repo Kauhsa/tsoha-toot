@@ -4,7 +4,7 @@ import os
 import re
 from flask import Flask, session, redirect, render_template, flash, url_for, g
 from flaskext.gravatar import Gravatar
-from models import db, bcrypt, User, Tweet
+from models import db, bcrypt, User, Tweet, Tag
 from timesince import timesince
 from forms import LoginForm, RegistrationForm, TweetForm
 from jinja2 import Markup
@@ -46,10 +46,16 @@ def inject_user():
 def tweet_content(s):
     def user_url(match):
         user_id = match.group(1)
-        return Markup(u'<a href="%s">@%s</a>') % (Markup.escape(url_for('user', user_id=user_id)), Markup.escape(user_id))
+        return Markup(u'<a href="%s">@%s</a>') % (Markup.escape(url_for('user', user_id=user_id.lower())), Markup.escape(user_id))
+
+    def tag_url(match):
+        tag_id = match.group(1)
+        return Markup(u'<a href="%s">#%s</a>') % (Markup.escape(url_for('tag', tag_id=tag_id.lower())), Markup.escape(tag_id))
 
     content = Markup.escape(s)
-    return Markup(re.sub(r'@([a-zA-Z]+)', user_url, content))
+    content = Markup(re.sub(r'@([a-zA-Z]+)', user_url, content))
+    content = Markup(re.sub(r'#([a-zA-Z0-9_]+)', tag_url, content))
+    return content
 
 
 @app.template_filter('timesince')
@@ -145,6 +151,12 @@ def unfollow(user_id):
         flash(u'Käyttäjän %s seuraaminen lopetettu!' % user.id_repr())
 
     return redirect(url_for('user', user_id=user_id))
+
+
+@app.route('/tag/<tag_id>', methods=('GET',))
+def tag(tag_id):
+    tag = Tag.query.get_or_404(tag_id)
+    return render_template('tag.html', tag=tag)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

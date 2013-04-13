@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% block header %}
+#{{ tag.id }}
+{% endblock %}
+
+{% block content %}
+    {% for tweet in tag.tweets %}
+        {{ render_tweet(tweet, True, loop.cycle(True, False)) }}
+    {% endfor %}
+{% endblock %}
