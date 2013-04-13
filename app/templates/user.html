@@ -21,7 +21,7 @@
         <h4>Seuraa:</h4>
         <ul class="nav nav-pills nav-stacked">
             {% for followed_user in user.following %}
-                <li>{{ user_link(followed_user) }}</li>
+                <li>{{ user_link(followed_user, avatar=True) }}</li>
             {% else %}
                 <li><p class="muted">
                     {% if logged_user_profile %}
@@ -36,7 +36,7 @@
         <h4>Seuraajat:</h4>
         <ul class="nav nav-pills nav-stacked">
             {% for following_user in user.followers %}
-                <li>{{ user_link(following_user) }}</li>
+                <li>{{ user_link(following_user, avatar=True) }}</li>
             {% else %}
                 <li><p class="muted">
                     {% if logged_user_profile %}

@@ -13,3 +13,8 @@
 .tweet.even {
     background-color: #F0F0F0; 
 }
+
+.tag {
+    margin: 5px 10px;
+    display: inline-block;
+}

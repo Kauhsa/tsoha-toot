@@ -17,6 +17,11 @@
     </div>
 {% endmacro %}
 
-{% macro user_link(user) %}
-    <a href="{{ url_for('user', user_id=user.id) }}">{{ user.id_repr() }}</a>
+{% macro user_link(user, avatar=False) %}
+    <a href="{{ url_for('user', user_id=user.id) }}">
+        {% if avatar %}
+            <img class="menu-avatar" src="{{ user.email | gravatar(size=20) }}">
+        {% endif %}
+        {{ user.id_repr() }}
+    </a>
 {% endmacro %}

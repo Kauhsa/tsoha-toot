@@ -3,3 +3,28 @@
 {% block header %}
 Tervetuloa Tööttiin!
 {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span4">
+        <h3>Uusimmat:</h3>
+        {% for tweet in latest_tweets %}
+            {{ render_tweet(tweet, True, loop.cycle(True, False)) }}
+        {% else %}
+            <p class="muted">Ei tööttejä!</p>
+        {% endfor %}
+    </div>
+    <div class="span4">
+        <h3>Tagit:</h3>
+        {% for tag in tagcloud %}
+            {% set size = 200 * tag[1] %}
+            <a class="tag" style="font-size: {{ size }}px" href="{{ url_for('tag', tag_id=tag[0]) }}">
+                #{{ tag[0] }}
+            </a>
+        {% endfor %}
+    </div>
+    <div class="span4">
+        <h3>Seuratuimmat:</h3>
+    </div>
+</div>
+{% endblock %}

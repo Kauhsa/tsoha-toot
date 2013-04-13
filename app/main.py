@@ -4,10 +4,11 @@ import os
 import re
 from flask import Flask, session, redirect, render_template, flash, url_for, g
 from flaskext.gravatar import Gravatar
-from models import db, bcrypt, User, Tweet, Tag
+from jinja2 import Markup
+from sqlalchemy import func, desc
+from models import db, bcrypt, User, Tweet, Tag, taggings
 from timesince import timesince
 from forms import LoginForm, RegistrationForm, TweetForm
-from jinja2 import Markup
 
 
 def initalize_app():
@@ -65,7 +66,15 @@ def ts(s):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    def tagcloud(tags):
+        total = float(sum(tag.count for tag in tags))
+        tags = sorted(((tag[1], tag.count / total) for tag in tags), key=lambda t: t[0])
+        return tags
+
+    latest_tweets = Tweet.query.order_by(Tweet.timestamp.desc()).limit(5).all()
+    tags = db.session.query(taggings, func.count().label('count')).join(Tag).group_by('tag_id').order_by(desc('count')).limit(50).all()
+    #raise
+    return render_template('index.html', latest_tweets=latest_tweets, tagcloud=tagcloud(tags))
 
 
 @app.route('/login', methods=('GET', 'POST'))
