@@ -53,7 +53,7 @@ class User(db.Model):
         # TODO: can be optimized to single query methinks
         following_set = set(user.id for user in self.following)
         return Tweet.query.filter(or_(Tweet.author_id.in_(following_set), Tweet.mentions.contains(self)))\
-                          .order_by(Tweet.timestamp.desc()).limit(10).all()
+                          .order_by(Tweet.timestamp.desc()).all()
 
 
 class Tweet(db.Model):
