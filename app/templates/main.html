@@ -1,5 +1,5 @@
-{% from "_formhelpers.html" import render_field %}
-{% from "_helpers.html" import render_tweet, user_link %}
+{% from "_formhelpers.html" import render_field with context %}
+{% from "_helpers.html" import render_tweet, user_link with context %}
 
 <!DOCTYPE html>
 <html lang="fi">
@@ -18,9 +18,10 @@
                 <div class="container">
                     {% block navbar %}
                     <a href="{{ url_for('index') }}" class="brand">Tööt!</a>
-                    <ul class="nav">
-                    </ul>
-                    <ul class="nav pull-right">
+
+                    <ul class="nav pull-right">                        
+                        <li class="divider-vertical"></li>
+
                         {% if logged_in %}
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
@@ -38,6 +39,10 @@
                         <li><a href="{{ url_for('login') }}">Kirjaudu</a></li>
                         {% endif %}
                     </ul> 
+
+                    <form class="form-search navbar-search pull-right" action="{{ url_for('search') }}" method="GET">
+                        <input type="text" class="search-query" name="term" placeholder="#tag tai @käyttäjä">
+                    </form>
                     {% endblock %}
                 </div>
             </div>

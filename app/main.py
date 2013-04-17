@@ -2,7 +2,7 @@
 
 import os
 import re
-from flask import Flask, session, redirect, render_template, flash, url_for, g
+from flask import Flask, session, redirect, render_template, flash, url_for, g, request, abort
 from flaskext.gravatar import Gravatar
 from jinja2 import Markup
 from sqlalchemy import func, desc
@@ -78,6 +78,21 @@ def index():
     return render_template('index.html', latest_tweets=latest_tweets, tagcloud=tagcloud(tags), followed=followed)
 
 
+@app.route('/search', methods=('GET', 'POST'))
+def search():
+    term = request.args.get('term', None)
+    if not term:
+        return redirect(request.referrer or url_for('index'))
+
+    if term.startswith('#'):
+        return redirect(url_for('tag', tag_id=term[1:]))
+    if term.startswith('@'):
+        return redirect(url_for('user', user_id=term[1:]))
+    else:
+        flash(u'Voit etsiä vain käyttäjiä tai tageja. :(')
+        return redirect(request.referrer or url_for('index'))
+
+
 @app.route('/login', methods=('GET', 'POST'))
 def login():
     form = LoginForm()
@@ -129,6 +144,19 @@ def user(user_id):
         flash(u'Uusi töötti lisätty!')
 
     return render_template('user.html', user=user, tweet_form=tweet_form)
+
+
+@app.route('/tweet/<tweet_id>/delete', methods=('GET',))
+def delete_tweet(tweet_id):
+    tweet = Tweet.query.get_or_404(tweet_id)
+    if tweet.author != g.logged_user:
+        abort(403)
+
+    db.session.delete(tweet)
+    db.session.commit()
+    flash(u'Töötti poistettu!')
+
+    return redirect(request.referrer or url_for('index'))
 
 
 @app.route('/follow/<user_id>', methods=('GET',))

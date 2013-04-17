@@ -1,5 +1,8 @@
 {% macro render_tweet(tweet, show_user=True, is_odd=True) %}
     <div class="media tweet {% if not is_odd %} even {% endif %}">
+        {% if tweet.author == logged_user %}
+            <a class="close" href="{{ url_for('delete_tweet', tweet_id=tweet.id) }}">&times;</a>
+        {% endif %}
         <a class="pull-left" href="{{ url_for('user', user_id=tweet.author.id) }}">
             <img class="media-object img-rounded" src="{{ tweet.author.email | gravatar(size=64) }}">
         </a>
