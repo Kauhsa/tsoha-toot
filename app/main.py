@@ -68,6 +68,8 @@ def ts(s):
 @app.route('/')
 def index():
     def tagcloud(tags):
+        if not tags:
+            return []
         total = float(max(tag.count for tag in tags))
         tags = sorted(((tag[0], tag.count / total) for tag in tags), key=lambda t: t[0])
         return tags
