@@ -160,7 +160,7 @@ Ohjelma käyttää SQLAlchemy-kirjaston deklaratiivista tietokannan määrittely
 \item[\texttt{docs/}] Kansio, jossa tähän dokumenttiin liittyvät tiedostot.
 \item[\texttt{docs/docs.pdf}] Tämä dokumentti.
 \item[\texttt{app/}] Kansio, joka sisältää kaiken ohjelmakoodin.
-\item[\texttt{app/initalize\_db.py}] Python-skripti, jolla saa luotua tietokannan.
+\item[\texttt{app/initialize\_db.py}] Python-skripti, jolla saa luotua tietokannan.
 \item[\texttt{app/static/}] Kansio, joka sisältää kaikki web-sovelluksen staattiset tiedostot - esimerkiksi CSS-tyylitiedostot.
 \item[\texttt{app/static/css/bootstrap.min.css}] Bootstrap-kirjasto, jota käytetään sivun ulkoasun pohjana.
 \item[\texttt{app/static/css/own.css}] Omat CSS-tyylit.
@@ -227,7 +227,7 @@ Viedään projekti Herokuun:
 
 Luodaan tietokanta palvelimelle:
 
-\texttt{\$ heroku run python2 app/initalize\_db.py}
+\texttt{\$ heroku run python2 app/initialize\_db.py}
 
 Avataan ohjelma:
 
