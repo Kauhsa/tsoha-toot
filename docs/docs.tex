@@ -215,8 +215,11 @@ Luodaan uusi Heroku-applikaatio.
 
 Lisätään projektiin tietokanta:
 
-\texttt{\$ heroku addons:add heroku-postgresql:dev} \\
-\texttt{\$ heroku pg:promote}
+\texttt{\$ heroku addons:add heroku-postgresql:dev}
+
+Komento antaa jonkun ympäristömuuttujan nimen, jossa on PostgreSQL-yhteyden tiedot, esim \verb+HEROKU_POSTGRESQL_PURPLE_URL+. Asetetaan se pää-tietokannaksi seuraavasti:
+
+\texttt{\$ heroku pg:promote HEROKU\_POSTGRESQL\_PURPLE\_URL}
 
 Viedään projekti Herokuun:
 
