@@ -34,7 +34,7 @@ Käyttäjä pystyy myös seuraamaan muita käyttäjiä, jolloin niiden viestit n
 \subsection{Toimintaympäristö}
 Järjestelmä on toteutettu Pythonilla Linux-ympäristössä käyttäen apuna Flask-sovelluskehystä, ja vaatii siis toimiakseen Pythonia tukevan ympäristön. Tietokantanaan se pystyy käyttämään ainakin SQLite:a ja PostgreSQL:aa, todennäköisesti muutkin järjestelmän käyttämän SQLAlchemy-kirjaston tukemat tietokannat toimivat.
 
-Järjestelmä on suunniteltu toimimaan Heroku-palvelussa suoraan.
+Järjestelmä on suunniteltu toimimaan Heroku-palvelussa suoraan. Testiasennus löytyy osoitteesta \url{http://tsoha-toot.herokuapp.com}. Testaamista varten voi rekisteröityä palveluun, sähköpostiosoitteiden ei tarvitse olla oikeita.
 
 \subsection{Rajaukset}
 Järjestelmään ei varmaankaan tulla toteuttamaan mitään ylläpitotoimintoja.
@@ -143,7 +143,7 @@ Viestiin liittyvä tägi. Sama tägi voi liittyä useaan viestiin, ja yhteen vie
     \item[Kuvailu] Tägin nimi.
 \end{description}
 
-\section{Relaatiotietokantakaavio}
+\subsection{Relaatiotietokantakaavio}
 
 \begin{figure}[H]
     \centering
@@ -153,6 +153,8 @@ Viestiin liittyvä tägi. Sama tägi voi liittyä useaan viestiin, ja yhteen vie
 Ohjelma käyttää SQLAlchemy-kirjaston deklaratiivista tietokannan määrittelyä, jonka avulla pystytään generoimaan SQL-lauseet monille eri tietokantaohjelmistoille -- siispä SQL-lauseita ei ole dokumentissa mukana tai liitteenä.
 
 \section{Järjestelmän yleisrakenne}
+
+\subsection{Projektin tiedostot}
 
 \begin{description}
 \item[\texttt{docs/}] Kansio, jossa tähän dokumenttiin liittyvät tiedostot.
@@ -170,14 +172,14 @@ Ohjelma käyttää SQLAlchemy-kirjaston deklaratiivista tietokannan määrittely
 \item[\texttt{requirements.txt}] Sovelluksen tarvitsemat kirjastot.
 \end{description}
 
-\section{Käyttöliittymäkaavio}
+\subsection{Käyttöliittymäkaavio}
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{navigaatio.pdf}
 \end{figure}
 
 \section{Asennustiedot}
-Ohje olettaa, että käytössä on Linux, Python 2.7 ja pip.
+Ohje olettaa, että käytössä on Linux, Python 2.7 ja virtualenv.
 
 \subsection{Paikallisen version ajaminen}
 Ensin kloonataan git-repositorio GitHubista paikalliselle koneelle ja siirrytään kyseiseen repositorioon:
@@ -185,7 +187,11 @@ Ensin kloonataan git-repositorio GitHubista paikalliselle koneelle ja siirrytä�
 \texttt{\$ git clone git://github.com/Kauhsa/tsoha-toot.git} (tai vaikkapa oman forkin git-osoite) \\
 \texttt{\$ cd tsoha-toot}
 
-Asennetaan ohjelmiston tarvitsemat riippuvuudet -- tässä vaiheessa virtualenvistä voisi olla iloa, että kaikki riippuvuudet eivät asentuisi globaalisti.
+Luodaan uusi virtualenv - ei pakollista, mutta riippuvuuksien hoitaminen on muuten vaikeaa ainakin ilman root-oikeuksia.
+
+\texttt{\$ mkvirtualenv --python=python2 toot}
+
+Asennetaan ohjelmiston tarvitsemat riippuvuudet.
 
 \texttt{\$ pip install -r requirements.txt}
 
@@ -197,8 +203,33 @@ Ajetaan kehityspalvelin:
 
 \texttt{\$ python app/main.py}
 
-Nyt
+Nyt palvelimen pitäisi olla päällä, ja sovellukseen pääsee käsiksi selaimella käyttämällä osoitetta \url{http://127.0.0.1:5000/}.
 
 \subsection{Herokuun siirtäminen}
+
+Oletetaan, että Heroku-tunnus on luotu, siihen on kirjauduttu ja Heroku Toolbelt on asennettu.
+
+Luodaan uusi Heroku-applikaatio.
+
+\texttt{\$ heroku create}
+
+Lisätään projektiin tietokanta:
+
+\texttt{\$ heroku addons:add heroku-postgresql:dev} \\
+\texttt{\$ heroku pg:promote}
+
+Viedään projekti Herokuun:
+
+\texttt{\$ git push heroku master}
+
+Luodaan tietokanta palvelimelle:
+
+\texttt{\$ heroku run python2 app/initalize\_db.py}
+
+Avataan ohjelma:
+
+\texttt{\$ heroku open}
+
+Web-sovelluksen pitäisi avautua selaimessa.
 
 \end{document}
