@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="36cm" height="15cm" viewBox="258 144 705 289" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="782" y="238.5" width="181.1" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="782" y="238.5" width="181.1" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="872.55" y="252.5">follows</text>
+    <rect style="fill: #ffffff" x="782" y="256.5" width="181.1" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="782" y="256.5" width="181.1" height="36"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="787" cy="266.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="791" y="272.5">follower_id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="878.55" y="272.5">varchar(20)</text>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="787" cy="282.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="791" y="288.5">followed_id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="878.55" y="288.5">varchar(20)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="489" y="144.5" width="159.95" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="489" y="144.5" width="159.95" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="568.975" y="158.5">mentions</text>
+    <rect style="fill: #ffffff" x="489" y="162.5" width="159.95" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="489" y="162.5" width="159.95" height="36"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="494" cy="172.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="498" y="178.5">tweet_id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="564.4" y="178.5">int</text>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="494" cy="188.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="498" y="194.5">user_id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="564.4" y="194.5">varchar(20)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="517" y="394.5" width="124.7" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="517" y="394.5" width="124.7" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="579.35" y="408.5">tag</text>
+    <rect style="fill: #ffffff" x="517" y="412.5" width="124.7" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="517" y="412.5" width="124.7" height="20"/>
+    <polygon style="fill: #000000" points="520,422.5 522,425.5 524,422.5 522,419.5 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="526" y="428.5">id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="550.1" y="428.5">varchar(140)</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="526" y1="430.1" x2="634.7" y2="430.1"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="281" y="359.5" width="167" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="281" y="359.5" width="167" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="364.5" y="373.5">taggings</text>
+    <rect style="fill: #ffffff" x="281" y="377.5" width="167" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="281" y="377.5" width="167" height="36"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="286" cy="387.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="393.5">tweet_id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="356.4" y="393.5">int</text>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="286" cy="403.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="409.5">tag_id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="356.4" y="409.5">varchar(140)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="281" y="197.5" width="174.05" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="281" y="197.5" width="174.05" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="368.025" y="211.5">tweet</text>
+    <rect style="fill: #ffffff" x="281" y="215.5" width="174.05" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="281" y="215.5" width="174.05" height="68"/>
+    <polygon style="fill: #000000" points="284,225.5 286,228.5 288,225.5 286,222.5 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="231.5">id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="363.45" y="231.5">int</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="290" y1="233.1" x2="384.6" y2="233.1"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="286" cy="241.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="247.5">content</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="363.45" y="247.5">varchar(140)</text>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="286" cy="257.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="263.5">timestamp</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="363.45" y="263.5">datetime</text>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="286" cy="273.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="290" y="279.5">author_id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="363.45" y="279.5">varchar(20)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="555" y="264.5" width="159.95" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="555" y="264.5" width="159.95" height="18"/>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="634.975" y="278.5">user</text>
+    <rect style="fill: #ffffff" x="555" y="282.5" width="159.95" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="555" y="282.5" width="159.95" height="52"/>
+    <polygon style="fill: #000000" points="558,292.5 560,295.5 562,292.5 560,289.5 "/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="564" y="298.5">id</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="623.35" y="298.5">varchar(20)</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #000000" x1="564" y1="300.1" x2="700.9" y2="300.1"/>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="560" cy="308.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="564" y="314.5">email</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="623.35" y="314.5">varchar(254)</text>
+    <ellipse style="fill: none; fill-opacity:0; stroke-width: 0.2; stroke: #000000" cx="560" cy="324.5" rx="2" ry="2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="564" y="330.5">pw_hash</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="623.35" y="330.5">varchar(60)</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="455.05,273.5 456.05,273.5 554,273.5 544,273.5 "/>
+    <polygon style="fill: #000000" points="544,278.5 554,273.5 544,268.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="544,278.5 554,273.5 544,268.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="782,266.5 748.475,266.5 748.475,273.5 725.95,273.5 "/>
+    <polygon style="fill: #000000" points="725.95,268.5 715.95,273.5 725.95,278.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="725.95,268.5 715.95,273.5 725.95,278.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="782,282.5 748.475,282.5 748.475,273.5 725.95,273.5 "/>
+    <polygon style="fill: #000000" points="725.95,268.5 715.95,273.5 725.95,278.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="725.95,268.5 715.95,273.5 725.95,278.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="489,172.5 472.025,172.5 472.025,206.5 466.05,206.5 "/>
+    <polygon style="fill: #000000" points="466.05,201.5 456.05,206.5 466.05,211.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="466.05,201.5 456.05,206.5 466.05,211.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="648.95,188.5 674.962,188.5 674.962,253.5 "/>
+    <polygon style="fill: #000000" points="669.962,253.5 674.962,263.5 679.962,253.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="669.962,253.5 674.962,263.5 679.962,253.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="281,387.5 260,387.5 260,206.5 270,206.5 "/>
+    <polygon style="fill: #000000" points="270,211.5 280,206.5 270,201.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="270,211.5 280,206.5 270,201.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="448,403.5 449,403.5 516,403.5 506,403.5 "/>
+    <polygon style="fill: #000000" points="506,408.5 516,403.5 506,398.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="506,408.5 516,403.5 506,398.5 "/>
+  </g>
+</svg>

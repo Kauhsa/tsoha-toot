@@ -10,6 +10,9 @@
 \setlength{\parindent}{0.0in}
 \setlength{\parskip}{0.1in}
 
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+
 \begin{document}
 \title{Aineopintojen harjoitustyö: Tietokantasovellus \\ Twitter-kloonin dokumentaatio}
 \author{Mika Viinamäki}
@@ -139,5 +142,63 @@ Viestiin liittyvä tägi. Sama tägi voi liittyä useaan viestiin, ja yhteen vie
     \item[Arvojoukko] Uniikki, pienistä kirjaimista koostuva, enintään 140 merkkiä pitkä merkkijono.
     \item[Kuvailu] Tägin nimi.
 \end{description}
+
+\section{Relaatiotietokantakaavio}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{tietokanta.pdf}
+\end{figure}
+
+Ohjelma käyttää SQLAlchemy-kirjaston deklaratiivista tietokannan määrittelyä, jonka avulla pystytään generoimaan SQL-lauseet monille eri tietokantaohjelmistoille -- siispä SQL-lauseita ei ole dokumentissa mukana tai liitteenä.
+
+\section{Järjestelmän yleisrakenne}
+
+\begin{description}
+\item[\texttt{docs/}] Kansio, jossa tähän dokumenttiin liittyvät tiedostot.
+\item[\texttt{docs/docs.pdf}] Tämä dokumentti.
+\item[\texttt{app/}] Kansio, joka sisältää kaiken ohjelmakoodin.
+\item[\texttt{app/initalize\_db.py}] Python-skripti, jolla saa luotua tietokannan.
+\item[\texttt{app/static/}] Kansio, joka sisältää kaikki web-sovelluksen staattiset tiedostot - esimerkiksi CSS-tyylitiedostot.
+\item[\texttt{app/static/css/bootstrap.min.css}] Bootstrap-kirjasto, jota käytetään sivun ulkoasun pohjana.
+\item[\texttt{app/static/css/own.css}] Omat CSS-tyylit.
+\item[\texttt{app/templates/}] Kansio, jossa ovat HTML-koodin generoinnissa käytettävät Jinja2-templatet.
+\item[\texttt{app/main.py}] Sovelluksen "päätiedosto". Sisältää mm. SQL- ja muut asetukset sekä kaikki näkymät.
+\item[\texttt{app/models.py}] Tietokantamallit sisältävä tiedosto.
+\item[\texttt{app/forms.py}] Lomakkeet sisältävä tiedosto.
+\item[\texttt{Procfile}] Sovelluksen ajamiseen tarvittavat tiedot Herokua varten.
+\item[\texttt{requirements.txt}] Sovelluksen tarvitsemat kirjastot.
+\end{description}
+
+\section{Käyttöliittymäkaavio}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{navigaatio.pdf}
+\end{figure}
+
+\section{Asennustiedot}
+Ohje olettaa, että käytössä on Linux, Python 2.7 ja pip.
+
+\subsection{Paikallisen version ajaminen}
+Ensin kloonataan git-repositorio GitHubista paikalliselle koneelle ja siirrytään kyseiseen repositorioon:
+
+\texttt{\$ git clone git://github.com/Kauhsa/tsoha-toot.git} (tai vaikkapa oman forkin git-osoite) \\
+\texttt{\$ cd tsoha-toot}
+
+Asennetaan ohjelmiston tarvitsemat riippuvuudet -- tässä vaiheessa virtualenvistä voisi olla iloa, että kaikki riippuvuudet eivät asentuisi globaalisti.
+
+\texttt{\$ pip install -r requirements.txt}
+
+Luodaan tietokanta, ohjelmisto käyttää oletuksena SQLiteä jos muuta ei määritellä:
+
+\texttt{\$ python app/initialize\_db.py}
+
+Ajetaan kehityspalvelin:
+
+\texttt{\$ python app/main.py}
+
+Nyt
+
+\subsection{Herokuun siirtäminen}
 
 \end{document}

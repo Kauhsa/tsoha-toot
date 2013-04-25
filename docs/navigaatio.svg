@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="39cm" height="27cm" viewBox="-721 19 779 540" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="-460" y="120" width="83.15" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-460" y="120" width="83.15" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-418.425" y="142.6">
+      <tspan x="-418.425" y="142.6">Aloitussivu</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-660" y="20" width="220" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-660" y="20" width="220" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-550" y="42.6">
+      <tspan x="-550" y="42.6">Navigaatiopalkki (kirjautunut ulos)</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-720" y="120" width="100.15" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-720" y="120" width="100.15" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-669.925" y="142.6">
+      <tspan x="-669.925" y="142.6">Kirjautuminen</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-600" y="120" width="123.6" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-600" y="120" width="123.6" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-538.2" y="142.6">
+      <tspan x="-538.2" y="142.6">Rekisteröityminen</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-360" y="20" width="226.6" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-360" y="20" width="226.6" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-246.7" y="42.6">
+      <tspan x="-246.7" y="42.6">Navigaatiopalkki (kirjautunut sisään)</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-280.995" y1="58.9707" x2="-374.625" y2="113.494"/>
+    <polygon style="fill: #000000" points="-377.141,109.173 -383.266,118.526 -372.108,117.815 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-377.141,109.173 -383.266,118.526 -372.108,117.815 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-573.95" y1="58.9707" x2="-637.527" y2="111.985"/>
+    <polygon style="fill: #000000" points="-640.729,108.145 -645.207,118.389 -634.325,115.825 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-640.729,108.145 -645.207,118.389 -634.325,115.825 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-547.643" y1="58.9707" x2="-541.846" y2="108.105"/>
+    <polygon style="fill: #000000" points="-546.811,108.691 -540.674,118.036 -536.88,107.519 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-546.811,108.691 -540.674,118.036 -536.88,107.519 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-523.724" y1="58.9707" x2="-453.459" y2="112.373"/>
+    <polygon style="fill: #000000" points="-456.485,116.354 -445.498,118.424 -450.434,108.392 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-456.485,116.354 -445.498,118.424 -450.434,108.392 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-300" y="120" width="86.65" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-300" y="120" width="86.65" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-256.675" y="142.6">
+      <tspan x="-256.675" y="142.6">Oma profiili</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-180" y="80" width="127.15" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-180" y="80" width="127.15" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-116.425" y="102.6">
+      <tspan x="-116.425" y="102.6">Kirjautuminen ulos</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-248.692" y1="58.9707" x2="-253.591" y2="108.084"/>
+    <polygon style="fill: #000000" points="-258.566,107.587 -254.584,118.034 -248.616,108.58 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-258.566,107.587 -254.584,118.034 -248.616,108.58 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-203.286" y1="58.9951" x2="-169.831" y2="74.4033"/>
+    <polygon style="fill: #000000" points="-171.922,78.9447 -160.748,78.5866 -167.739,69.8618 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-171.922,78.9447 -160.748,78.5866 -167.739,69.8618 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-420" y="200" width="128.55" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-420" y="200" width="128.55" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-355.725" y="222.6">
+      <tspan x="-355.725" y="222.6">Tweetin tekeminen</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-281.45" y1="159.01" x2="-322.393" y2="192.079"/>
+    <polygon style="fill: #000000" points="-325.535,188.189 -330.172,198.362 -319.251,195.968 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-325.535,188.189 -330.172,198.362 -319.251,195.968 "/>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M -640.312 200 L -481.563,200 C -459.644,200 -441.875,208.507 -441.875,219 C -441.875,229.493 -459.644,238 -481.563,238 L -640.312,238 C -662.231,238 -680,229.493 -680,219 C -680,208.507 -662.231,200 -640.312,200z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M -640.312 200 L -481.563,200 C -459.644,200 -441.875,208.507 -441.875,219 C -441.875,229.493 -459.644,238 -481.563,238 L -640.312,238 C -662.231,238 -680,229.493 -680,219 C -680,208.507 -662.231,200 -640.312,200"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-560.938" y="214.2">
+      <tspan x="-560.938" y="214.2">Mistä tahansa, missä</tspan>
+      <tspan x="-560.938" y="230.2">käyttäjän nimimerkki näkyy</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-620" y="280" width="112.25" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-620" y="280" width="112.25" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-563.875" y="302.6">
+      <tspan x="-563.875" y="302.6">Käyttäjän profiili</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-561.672" y1="239.01" x2="-562.737" y2="267.998"/>
+    <polygon style="fill: #000000" points="-567.733,267.814 -563.104,277.991 -557.74,268.181 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-567.733,267.814 -563.104,277.991 -557.74,268.181 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-581.998" y1="318.991" x2="-610.943" y2="350.921"/>
+    <polygon style="fill: #000000" points="-614.647,347.562 -617.659,358.329 -607.238,354.279 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-614.647,347.562 -617.659,358.329 -607.238,354.279 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-536.91" y1="318.991" x2="-491.685" y2="352.519"/>
+    <polygon style="fill: #000000" points="-494.663,356.536 -483.652,358.475 -488.707,348.503 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-494.663,356.536 -483.652,358.475 -488.707,348.503 "/>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M -273.925 280 L -89.625,280 C -64.1785,280 -43.55,288.954 -43.55,300 C -43.55,311.046 -64.1785,320 -89.625,320 L -273.925,320 C -299.372,320 -320,311.046 -320,300 C -320,288.954 -299.372,280 -273.925,280z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M -273.925 280 L -89.625,280 C -64.1785,280 -43.55,288.954 -43.55,300 C -43.55,311.046 -64.1785,320 -89.625,320 L -273.925,320 C -299.372,320 -320,311.046 -320,300 C -320,288.954 -299.372,280 -273.925,280"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-181.775" y="303.2">
+      <tspan x="-181.775" y="303.2">Mistä tahansa, missä tag näkyy</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-300" y="360" width="238.7" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-300" y="360" width="238.7" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-180.65" y="382.6">
+      <tspan x="-180.65" y="382.6">Tägillä löytyvien viestien katseleminen</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-181.476" y1="320.994" x2="-181.091" y2="348.01"/>
+    <polygon style="fill: #000000" points="-186.091,348.081 -180.949,358.009 -176.092,347.939 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-186.091,348.081 -180.949,358.009 -176.092,347.939 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-280" y="200" width="150.6" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-280" y="200" width="150.6" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-204.7" y="222.6">
+      <tspan x="-204.7" y="222.6">Omien viestien katselu</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-243.675" y1="159.01" x2="-223.693" y2="189.766"/>
+    <polygon style="fill: #000000" points="-227.886,192.49 -218.245,198.152 -219.5,187.042 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-227.886,192.49 -218.245,198.152 -219.5,187.042 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-120" y="200" width="142.05" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-120" y="200" width="142.05" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-48.975" y="222.6">
+      <tspan x="-48.975" y="222.6">Oman seinän katselu</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-212.344" y1="156.075" x2="-111.19" y2="195.036"/>
+    <polygon style="fill: #000000" points="-112.987,199.702 -101.859,198.631 -109.393,190.371 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-112.987,199.702 -101.859,198.631 -109.393,190.371 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-720" y="440" width="195.35" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-720" y="440" width="195.35" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-622.325" y="462.6">
+      <tspan x="-622.325" y="462.6">Käyttäjän seinän katseleminen</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-571.185" y1="319.01" x2="-611.241" y2="428.658"/>
+    <polygon style="fill: #000000" points="-615.937,426.942 -614.672,438.051 -606.544,430.374 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-615.937,426.942 -614.672,438.051 -606.544,430.374 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-720" y="360" width="152.7" height="54"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-720" y="360" width="152.7" height="54"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-643.65" y="382.6">
+      <tspan x="-643.65" y="382.6">Käyttäjän seuraaminen</tspan>
+      <tspan x="-643.65" y="398.6">(kirjautunut sisään)</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-500" y="440" width="201.05" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-500" y="440" width="201.05" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-399.475" y="462.6">
+      <tspan x="-399.475" y="462.6">Käyttäjän viestien katseleminen</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-543.315" y1="319.01" x2="-427.918" y2="431.318"/>
+    <polygon style="fill: #000000" points="-431.405,434.901 -420.752,438.293 -424.431,427.735 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-431.405,434.901 -420.752,438.293 -424.431,427.735 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-540" y="360" width="189.65" height="54"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-540" y="360" width="189.65" height="54"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-445.175" y="382.6">
+      <tspan x="-445.175" y="382.6">Käyttäjän seuraamisen poisto</tspan>
+      <tspan x="-445.175" y="398.6">(kirjautunut sisään)</tspan>
+    </text>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M -223.975 440 L 0.125,440 C 31.0668,440 56.15,448.954 56.15,460 C 56.15,471.046 31.0668,480 0.125,480 L -223.975,480 C -254.917,480 -280,471.046 -280,460 C -280,448.954 -254.917,440 -223.975,440z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M -223.975 440 L 0.125,440 C 31.0668,440 56.15,448.954 56.15,460 C 56.15,471.046 31.0668,480 0.125,480 L -223.975,480 C -254.917,480 -280,471.046 -280,460 C -280,448.954 -254.917,440 -223.975,440"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-111.925" y="463.2">
+      <tspan x="-111.925" y="463.2">Mistä tahansa, missä oma viesti näkyy</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-180" y="520" width="132.6" height="38"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-180" y="520" width="132.6" height="38"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="-113.7" y="542.6">
+      <tspan x="-113.7" y="542.6">Viestin poistaminen</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="-112.397" y1="480.994" x2="-113.004" y2="508.012"/>
+    <polygon style="fill: #000000" points="-118.002,507.899 -113.228,518.009 -108.005,508.124 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-118.002,507.899 -113.228,518.009 -108.005,508.124 "/>
+  </g>
+</svg>
